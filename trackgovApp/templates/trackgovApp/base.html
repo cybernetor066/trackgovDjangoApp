@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>{% block title %}Track Gov Portal{% endblock title %}</title>
+    <meta charset="UTF-8" />    <!--Character encoding.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'trackgovApp/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'trackgovApp/bs5/css/bootstrap.css' %}">
+</head>
+
+<body>
+    <!-- Grey with black text -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <ul class="navbar-nav">
+            <li class="nav-item active mr-5">
+            <a class="nav-link" href="{%  url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item mr-5">
+            <a class="nav-link" href="{%  url 'home' %}">About</a>
+            </li>
+            <li class="nav-item mr-5">
+            <a class="nav-link" href="{%  url 'home' %}">Contact</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{%  url 'home' %}">Faq</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto navbar-right">
+            <li>
+                <a href="#" class="nav-link"><i class="fa fa-twitter fa-lg"></i></a>
+            </li>
+            <li>
+                <a href="#" class="nav-link"><i class="fa fa-facebook fa-lg"></i></a>
+            </li>
+            <li>
+                <a href="#" class="nav-link"><i class="fa fa-linkedin fa-lg"></i></a>
+            </li>
+            <li>
+                <a href="#" class="nav-link"><i class="fa fa-telegram fa-lg"></i></a>
+            </li>
+        </ul>
+
+    </nav>
+    <div class="container-fluid">
+    {% block content %}
+    {% endblock content %}
+    </div>
+
+</body>
+</html>

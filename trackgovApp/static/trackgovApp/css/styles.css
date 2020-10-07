@@ -1,0 +1,63 @@
+/* Dashboard */
+#dashcol-left {
+    /* margin-top: 6rem; */
+    border: solid 1px green;
+}
+
+#dashcol-center {
+    /* margin-top: 6rem; */
+    border: solid 1px green;
+
+}
+
+
+#dashcol-right {
+    /* margin-top: 6rem; */
+    border: solid 1px green;
+
+}
+
+
+
+#dash-col-left {
+    border: solid 1px grey;
+}
+
+/* .dash-col-left1{
+    min-height: 60%;
+}
+.dash-col-left2{
+    min-height: 20%;
+}
+.dash-col-left3{
+    min-height: 20%;
+} */
+
+
+
+#dash-col-center {
+    border: solid 1px grey;
+
+}
+
+
+#dash-col-right {
+    border: solid 1px grey;
+
+}
+
+
+
+
+/* Bills */
+.bills-firstSubContainer {
+    border: solid 1px grey;
+}
+
+.bills-secondSubContainer {
+    border: solid 1px grey;
+}
+
+.bills-secondSubContainer1, .bills-secondSubContainer2 {
+    border: solid 1px grey;
+}

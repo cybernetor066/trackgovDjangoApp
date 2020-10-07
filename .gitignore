@@ -1,0 +1,4 @@
+miscellaneous/
+__pycache__/
+*startup.sh
+*.env
