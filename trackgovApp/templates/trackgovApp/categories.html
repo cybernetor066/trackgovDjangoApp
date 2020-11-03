@@ -4,15 +4,15 @@
 
     <div class="container my-4">
 
-        <p class="font-weight-bold">SELECT AT LEAST ONE TOPIC</p>
+        <p class="font-weight-bold ml-5">SELECT AT LEAST ONE TOPIC</p>
         <form>
-            <div class="row">
+            <div class="row w-50 ml-5">
                 <div class="col-sm">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                     <!-- Default checked -->
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check1" checked>
+                        <input type="checkbox" class="custom-control-input" id="check1">
                         <label class="custom-control-label" for="check1">Check me</label>
                     </div>
                     </li>
@@ -166,37 +166,21 @@
                 </ul>
                 </div>
 
-
-                <div class="form-row align-items-center mt-5 col-sm ml-5">
-                    <div class="col-auto my-1">
-                    <label class="mr-sm-2" for="inlineFormCustomSelect">Choose Region</label>
-                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                        <option selected>Choose...</option>
-                        <option value="1">Alabama</option>
-                        <option value="2">Atlanta</option>
-                        <option value="3">Texas</option>
-                        <option value="3">Kentucky</option>
-                    </select>
-                    </div>
-                </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-5 mb-5">
+            <a href="{% url 'dashboardbillslist' %}">
                 <div class="col-sm">
                     <div class="col-auto my-1 row justify-content-center align-self-center">
-                        <div class="custom-control custom-checkbox mr-sm-2">
-                            <input type="checkbox" class="custom-control-input mt-n5" id="customControlAutosizing">
-                            <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        {% comment %} <button type="submit" class="btn btn-primary">Submit</button> {% endcomment %}
+                        Submit
                     </div>
                 </div>
             </div>
+            </a>
         </form>
 
-    {% comment %} <div class="row justify-content-center align-self-center">
-        <a href="{%  url 'categories' %}" class="btn btn-success mt-5 ml-5 ">Next</a>
-    </div> {% endcomment %}
-
     </div>
+
+
 {% endblock content %}

@@ -18,5 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('trackgovApp.urls')),
+    # path(r'comments/', include('django_comments_xtd.urls')),
     path('admin/', admin.site.urls),
 ]

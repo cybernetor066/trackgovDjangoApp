@@ -1,0 +1,167 @@
+{% extends 'trackgovApp/base.html' %}
+{% block title %} Track Gov Signup {% endblock title %}
+{% block content %}
+
+
+    {% comment %} <div class="padding container d-flex justify-content-center">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <img src="../../static/trackgovApp/assets/logo3.png" class="img-fluid w-25 mt-3 justify-content-center myLogo" alt="">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+            <div class="fieldWrapper mt-3">
+                <label for="">First Name</label>
+                {{ form.firstname.errors }}
+                {{ form.firstname}}
+            </div>
+
+            <div class="fieldWrapper mt-3">
+                <label for="">Last Name</label>
+                {{ form.lastname.errors }}
+                {{ form.lastname }}
+            </div>
+
+            <div class="fieldWrapper mt-3">
+                <label for="">Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                {{ form.useremail.errors }}
+                {{ form.useremail }}
+            </div>            
+
+            <div class="fieldWrapper mt-3">
+                <label for="">Username</label>
+                {{ form.username.errors }}
+                {{ form.username }}
+            </div>    
+
+            <div class="fieldWrapper mt-3 mb-5">
+                <label for="">Password</label>
+                {{ form.password.errors }}
+                {{ form.password }}
+            </div>
+
+            <div class="flex-sb-m w-full p-t-3 p-b-24">
+                <div class="contact100-form-checkbox">
+                    <input class="input-checkbox100" id="ckb1" type="checkbox" name="terms_condition">
+                    <label class="label-checkbox100" for="ckb1">Agree to our terms and conditions.</label>
+                </div>
+            </div>
+
+
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign Up">
+            <p class="mt-5 mb-3 text-muted">(c) Karan Ganesh 2020</p>
+        </form>
+    </div> {% endcomment %}
+
+
+
+
+    <div class="account-pages mt-3 mb-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card">
+                        <!-- Logo-->
+                        <div class="card-header pt-4 pb-4 text-center bg-primary">
+                            <a href="{%  url 'home' %}">
+                                {% comment %} <img src="../../static/trackgovApp/assets/logo3.png" class="img-fluid w-25 mt-3 justify-content-center myLogo" alt=""> {% endcomment %}
+                                <span><img src="../../static/trackgovApp/assets/images/logo.png" alt="" height="18"></span>
+                            </a>
+                        </div>
+
+                        <div class="card-body p-4">
+                            
+                            <div class="text-center w-75 m-auto">
+                                <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Free Sign Up</h4>
+                                <p class="text-muted mb-4">Don't have an account? Create your account, it takes less than a minute </p>
+                            </div>
+
+                            <form action="" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                {% comment %} <div class="fieldWrapper mt-3 form-group">
+                                    <label for="">Email Address</label>
+                                    {{ form.lastname.errors }}
+                                    {{ form.useremail }}
+                                </div> {% endcomment %}
+
+
+                                <div class="form-group">
+                                    <label for="{{ form.useremail.Useremail }}">Email Address</label>
+                                    {{ form.useremail.errors }}
+                                    <input class="form-control" type="email" id="useremail" name="useremail" placeholder="Enter your email" required>
+                                </div>
+
+
+                                {% comment %} <div class="fieldWrapper mt-3 form-group">
+                                    <label for="">Username</label>
+                                    {{ form.lastname.errors }}
+                                    {{ form.username }}
+                                </div> {% endcomment %}
+
+                                <div class="form-group">
+                                    <label for="{{ form.username.Username }}">Username</label>
+                                    {{ form.username.errors }}
+                                    <input class="form-control" type="text" id="username" name="username" placeholder="Enter your username" required>
+                                </div>
+
+
+                                {% comment %} <div class="fieldWrapper mt-3 form-group">
+                                    <div class="input-group input-group-merge">
+                                        <label for="">Password</label>
+                                        {{ form.password.errors }}
+                                        {{ form.password }}     
+                                        <div class="input-group-append" data-password="false">
+                                            <div class="input-group-text">
+                                                <span class="password-eye"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> {% endcomment %}
+
+                                <div class="form-group">
+                                    <label for="{{ form.password.Password }}">Password</label>
+                                    {{ form.password.errors }}
+                                    <div class="input-group input-group-merge">
+                                        <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password">
+                                        <div class="input-group-append" data-password="false">
+                                            <div class="input-group-text">
+                                                <span class="password-eye"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-signup">
+                                        <label class="custom-control-label" for="checkbox-signup">I accept <a href="#" class="text-muted">Terms and Conditions</a></label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-0 text-center">
+                                    <button class="btn btn-primary" type="submit"> Sign Up </button>
+                                </div>
+
+                            </form>
+                        </div> <!-- end card-body -->
+                    </div>
+                    <!-- end card -->
+
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <p class="text-muted">Already have account? <a href="{% url 'login' %}" class="text-muted ml-1"><b>Log In</b></a></p>
+                        </div> <!-- end col-->
+                    </div>
+                    <!-- end row -->
+
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end page -->
+
+
+
+{% endblock content %}

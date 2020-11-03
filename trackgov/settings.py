@@ -10,7 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
-import os
+import os, sys
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,8 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
+
+# Then initialise all our enviroment variables
+load_dotenv()
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'tli252%l0epvz4w4-td($9&i6ia&m85l2v39id)!b$6d3oohz5'
+SECRET_KEY = '%s' % os.environ['DJANGO_BACKEND_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -32,17 +37,21 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_comments_xtd',
+    'django_comments',
     'trackgovApp',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -72,6 +81,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'trackgov.wsgi.application'
 
 
+
+COMMENTS_APP = 'django_comments_xtd'
+COMMENTS_XTD_MAX_THREAD_LEVEL = 1
+SITE_ID = 2
+
+
+
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -81,6 +97,47 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         # to avoid the error: django.db.utils.OperationalError: (1059, "Identifier name 
+#         # '/home/cybernetor066/Desktop/Software-IT-Web-Dev/GIT-Repos/FreelanceProjects/cpmrgmtFullStackDjango/p' is too long")
+#         # use just a name as value for the NAME key when using mysql database and not a path(MySQL is not a file based system)
+#         'NAME': 'trackgov_user_reg_data',
+#         'USER': '%s' % os.environ['DB_USER_NAME'],
+#         'PASSWORD': '%s' % os.environ['DB_PASSWORD'],
+#         'HOST': '%s' % os.environ['DB_HOST'],
+#         'PORT': '3306',
+#     }
+# }
+
+
+
+# Email
+# Email configuration is simple. You just go into your DJANGO_SETTINGS_MODULE (aka settings.py) and add the following:
+# ***************************************************************
+# Either enable sending mail messages to the console:
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# ***************************************************************
+# Or set up the EMAIL_* settings so that Django can send emails:
+# EMAIL_HOST = 'smtp.email-host-provider-domain.com'
+# EMAIL_HOST_USER = 'yourusername@youremail.com'
+# EMAIL_HOST_PASSWORD = 'your password'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'Your Name <you@email.com>'
+
+# ***************************************************************
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '%s' % os.environ['MY_EMAIL_ADDRESS']
+EMAIL_HOST_PASSWORD = '%s' % os.environ['MY_EMAIL_PASSWORD']
+# DEFAULT_FROM_EMAIL = "Helpdesk <helpdesk@yourdomain>"
+
 
 
 # Password validation
@@ -120,7 +177,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_DIRS =[
-   os.path.join(BASE_DIR,'static'),
-]

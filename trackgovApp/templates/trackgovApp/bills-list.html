@@ -1,0 +1,257 @@
+{% extends 'trackgovApp/base.html' %}
+{% block title %} Track Bill | Trackgov Dashboard {% endblock title %}
+{% block content %}
+
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left-side-menu">
+
+            <div class="h-100" id="left-side-menu-container" data-simplebar>
+
+                <!--- Sidemenu -->
+                <ul class="metismenu side-nav">
+
+                    <li class="side-nav-title side-nav-item">Navigation</li>
+
+                    <li class="side-nav-item">
+                        <a href="javascript: void(0);" class="side-nav-link">
+                            <i class="uil-home-alt"></i>
+                            <span class="badge badge-success float-right">4</span>
+                            <span> Dashboards </span>
+                        </a>
+                        <ul class="side-nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="dashboard-analytics.html">Analytics</a>
+                            </li>
+                            <li>
+                                <a href="dashboard-crm.html">CRM</a>
+                            </li>
+                            <li>
+                                <a href="index.html">Ecommerce</a>
+                            </li>
+                            <li>
+                                <a href="dashboard-projects.html">Projects</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="side-nav-title side-nav-item">Apps</li>
+
+                    <li class="side-nav-item">
+                        <a href="apps-calendar.html" class="side-nav-link">
+                            <i class="uil-calender"></i>
+                            <span> Calendar </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="apps-chat.html" class="side-nav-link">
+                            <i class="uil-comments-alt"></i>
+                            <span> Bills </span>
+                        </a>
+                    </li>
+
+        
+                </ul>
+
+                
+                <!-- End Sidebar -->
+
+                <div class="clearfix"></div>
+
+            </div>
+            <!-- Sidebar -left -->
+
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">
+                <!-- Topbar Start -->
+                <div class="navbar-custom">
+                    <ul class="list-unstyled topbar-right-menu float-right mb-0">
+                        <li class="dropdown notification-list d-lg-none">
+                            <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <i class="dripicons-search noti-icon"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
+                                <form class="p-3">
+                                    <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                                </form>
+                            </div>
+                        </li>                        
+                    </ul>
+                    
+                    
+                    <button class="button-menu-mobile open-left disable-btn">
+                        <i class="mdi mdi-menu"></i>
+                    </button>
+                    
+                    <div class="app-search dropdown d-none d-lg-block">            
+                    </div>
+                </div>
+                <!-- end Topbar -->
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+                    {% comment %} <!-- start page title -->
+                    <div class="row">
+                        <div class="page-title-box">
+                            <h4 class="page-title"> TRACKING BILLS</h4>
+                        </div>
+                    </div>     
+                    <!-- end page title -->    {% endcomment %}
+                    
+                    
+                    <div class="row">
+                        <table class="table table-dark mb-0">
+                            <thead>
+                                <tr>
+                                    <th>TRACKING BILLS</th>
+                                    <th>STATUS</th>
+                                    <th>COMMENTS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for _ in ourRange0 %}
+                                    <tr>
+                                        <td>
+                                            <span class="bills-list-title-custom">
+                                                <a id="" href="{% url 'dashboardbillprogress' %}">ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]</a>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <div class="progress-w-percent mb-0">
+                                                <span class="progress-value"></span>
+                                                <div class="progress progress-sm">
+                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 60%;" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <span class="uil uil-comments-alt"></span> 148 Comments
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <br />
+                    <!-- end row -->
+                    <br />
+                    <br />
+
+
+
+    
+
+                    {% comment %} Start row {% endcomment %}
+                    <div class="row">
+                        <table class="table table-dark mb-0">
+                            <thead>
+                                <tr>
+                                    <th>NEW BILLS</th>
+                                    <th>TRACK</th>
+                                    <th></th>
+                                    <th>COMMENTS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in ourRange1 %}
+                                    <tr>
+                                        <td>
+                                            <span class="bills-list-title-custom">
+                                                <a id="" href="{% url 'dashboardbillprogress' %}">ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]</a>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <!-- Switch-->
+                                            <div>
+                                                <input type="checkbox" id="switch{{ i }}" data-switch="success"/>
+                                                <label for="switch{{ i }}" data-on-label="Yes" data-off-label="No" class="mb-0 d-block"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a
+                                                id="main_0_content_0_lvResults_hlBill_0"
+                                                aria-label="Bill link - ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]"
+                                                rel="noopener noreferrer"
+                                                href="{% url 'dashboardbilldetail' %}"
+                                                target=""
+                                                >
+                                                <button class="btn btn-primary font-11">READ</button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <span class="uil uil-comments-alt"></span> 148 Comments
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <br />
+    
+                    
+                </div> <!-- container -->
+
+            </div> <!-- content -->
+
+            
+
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+    </div>
+    <!-- END wrapper -->
+
+<script>
+    var coll = document.getElementsByClassName("collapsible-custom");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+        this.classList.toggle("active-custom");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+        content.style.maxHeight = null;
+        } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        } 
+    });
+    }
+</script>
+
+{% endblock content %}
+
+
+
+{% comment %} <script>
+    var coll = document.getElementsByClassName("collapsible-custom");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+        this.classList.toggle("active-custom");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+        content.style.display = "none";
+        } else {
+        content.style.display = "block";
+        }
+    });
+    }
+</script> {% endcomment %}

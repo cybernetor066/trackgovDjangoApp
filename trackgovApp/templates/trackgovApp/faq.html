@@ -1,0 +1,194 @@
+{% extends 'trackgovApp/base.html' %}
+{% block title %} TrackGov | FAQ {% endblock title %}
+{% block content %}
+
+
+
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left-side-menu">
+
+            <div class="h-100" id="left-side-menu-container" data-simplebar>
+
+                <!--- Sidemenu -->
+                <ul class="metismenu side-nav">
+
+                    <li class="side-nav-title side-nav-item">Navigation</li>
+
+                    <li class="side-nav-item">
+                        <a href="javascript: void(0);" class="side-nav-link">
+                            <i class="uil-home-alt"></i>
+                            <span class="badge badge-success float-right">4</span>
+                            <span> Dashboards </span>
+                        </a>
+                        <ul class="side-nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="dashboard-analytics.html">Analytics</a>
+                            </li>
+                            <li>
+                                <a href="dashboard-crm.html">CRM</a>
+                            </li>
+                            <li>
+                                <a href="index.html">Ecommerce</a>
+                            </li>
+                            <li>
+                                <a href="dashboard-projects.html">Projects</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="side-nav-title side-nav-item">Apps</li>
+
+                    <li class="side-nav-item">
+                        <a href="apps-calendar.html" class="side-nav-link">
+                            <i class="uil-calender"></i>
+                            <span> Calendar </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="apps-chat.html" class="side-nav-link">
+                            <i class="uil-comments-alt"></i>
+                            <span> Chat </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="javascript: void(0);" class="side-nav-link">
+                            <i class="uil-store"></i>
+                            <span> Ecommerce </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="side-nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="apps-ecommerce-products.html">Products</a>
+                            </li>
+                            <li>
+                                <a href="apps-ecommerce-products-details.html">Products Details</a>
+                            </li>
+                            <li>
+                                <a href="apps-ecommerce-orders.html">Orders</a>
+                            </li>
+                            <li>
+                                <a href="apps-ecommerce-orders-details.html">Order Details</a>
+                            </li>
+                            <li>
+                                <a href="apps-ecommerce-customers.html">Customers</a>
+                            </li>
+                            <li>
+                                <a href="apps-ecommerce-shopping-cart.html">Shopping Cart</a>
+                            </li>
+                            <li>
+                                <a href="apps-ecommerce-checkout.html">Checkout</a>
+                            </li>
+                            <li>
+                                <a href="apps-ecommerce-sellers.html">Sellers</a>
+                            </li>
+                        </ul>
+                    </li>
+        
+                </ul>
+
+                <div class="clearfix"></div>
+
+            </div>
+            <!-- Sidebar -left -->
+
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">
+                <!-- Start Content-->
+                <div class="container-fluid">
+                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="text-center">
+                                <h3 class="">Frequently Asked Questions</h3>
+                                <p class="text-muted mt-3">Questions you may have</p>
+    
+                                <button type="button" class="btn btn-success btn-sm mt-2"><i class="mdi mdi-email-outline mr-1"></i> Email us your question</button>
+                                <button type="button" class="btn btn-info btn-sm mt-2 ml-1"><i class="mdi mdi-twitter mr-1"></i> Send us a tweet</button>
+                            </div>
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+    
+                    <div class="row pt-5">
+                        <div class="col-lg-5 offset-lg-1">
+                            <!-- Question/Answer -->
+                            <div>
+                                <div class="faq-question-q-box">Q.</div>
+                                <h4 class="faq-question" data-wow-delay=".1s">How does it work?</h4>
+                                <p class="faq-answer mb-4">We scrape our data live from online data published by your government.</p>
+                            </div>
+    
+                        
+                            {% comment %} <!-- Question/Answer -->
+                            <div>
+                                <div class="faq-question-q-box">Q.</div>
+                                <h4 class="faq-question">How many variations exist?</h4>
+                                <p class="faq-answer mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            </div>
+    
+                            <!-- Question/Answer -->
+                            <div>
+                                <div class="faq-question-q-box">Q.</div>
+                                <h4 class="faq-question" data-wow-delay=".1s">What is Lorem Ipsum?</h4>
+                                <p class="faq-answer mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            </div> {% endcomment %}
+    
+                        </div>
+                        <!--/col-md-5 -->
+    
+                        <div class="col-lg-5">
+                            <!-- Question/Answer -->
+                            <div>
+                                <div class="faq-question-q-box">Q.</div>
+                                <h4 class="faq-question">How much does it cost?</h4>
+                                <p class="faq-answer mb-4">trackgov will be free forever for anyone that wants to track their government. Become a member for $1 to join our community and interact with other members.</p>
+                            </div>
+    
+                            {% comment %} <!-- Question/Answer -->
+                            <div>
+                                <div class="faq-question-q-box">Q.</div>
+                                <h4 class="faq-question">License &amp; Copyright</h4>
+                                <p class="faq-answer mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            </div>
+    
+                            <!-- Question/Answer -->
+                            <div>
+                                <div class="faq-question-q-box">Q.</div>
+                                <h4 class="faq-question">Is safe use Lorem Ipsum?</h4>
+                                <p class="faq-answer mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            </div> {% endcomment %}
+    
+                        </div>
+                        <!--/col-md-5-->
+                    </div>
+                    <!-- end row -->
+                    
+                </div> <!-- container -->
+
+            </div> <!-- content -->
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+
+    </div>
+    <!-- END wrapper -->
+
+
+
+
+{% endblock content %}
+

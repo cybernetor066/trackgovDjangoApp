@@ -1,3 +1,9 @@
+/* Body */
+body {
+    background-color: rgb(34, 34, 36) !important;
+    color: whitesmoke !important;
+}
+
 /* Dashboard */
 #dashcol-left {
     /* margin-top: 6rem; */
@@ -60,4 +66,110 @@
 
 .bills-secondSubContainer1, .bills-secondSubContainer2 {
     border: solid 1px grey;
+}
+
+
+
+.myLogo {
+    max-height: 70px;
+    /* width: 50px; */
+}
+
+
+
+
+.bg-success-custom {
+    background-color: rgba(46, 46, 158, 0.87);
+}
+
+
+
+
+
+.bills-display-card-custom {
+    padding: 5px;
+    padding-left: 10px;
+    border: solid 1px rgb(18, 87, 87);
+    border-top: none;
+    border-bottom: none;
+}
+
+
+
+.bills-list-title-custom{
+    font-size: 13px;
+}
+
+
+.bills-list-title-custom a{
+    color: rgba(245, 245, 245, 0.664) !important;
+}
+
+
+
+
+.bills-list-title-custom > a:hover {
+    /* color: inherit; */
+    color: white !important;
+    text-decoration: underline;
+}
+
+.bills-list-track-custom, .bills-list-read-custom   {
+    background-color: whitesmoke;
+    color: rgb(0, 0, 0) !important;
+    padding: 3px;
+    font-size: 12px;
+}
+
+
+
+
+
+
+
+.collapsible-custom {
+    /* background-color: #777; */
+    /* color: white; */
+    cursor: pointer;
+    padding: 3px;
+    padding-bottom: none;
+    /* width: 100%; */
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+}
+  
+.active-custom, .collapsible-custom:hover {
+    background-color: rgba(15, 8, 20, 0.938);
+}
+
+.collapsible-custom:after {
+content: '\002B';
+/* color: white; */
+font-weight: bold;
+float: right;
+margin-left: 5px;
+}
+  
+.active-custom:after {
+    content: "\2212";
+}
+  
+.content-custom {
+    padding: 0 3px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    /* background-color: #f1f1f1; */
+}
+
+
+.line-seperator {
+    background-color: rgb(33, 90, 33);
+}
+
+.line-seperator3 {
+    /* background-color: rgb(18, 87, 87); */
+    border-bottom: solid 1px rgb(18, 87, 87);
 }

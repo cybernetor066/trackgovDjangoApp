@@ -1,13 +1,14 @@
 {% extends 'trackgovApp/base.html' %}
 {% block title %} Track Gov Index Page {% endblock title %}
 {% block content %}
-    <div class="row justify-content-center align-self-center">
+    
+    {% comment %} <div class="row justify-content-center align-self-center">
         <h3 class="mb-5 mt-5">Politics in the palm of your hand</h3>
     </div>
 
     <div class="card" style="width: 18rem;">
         <div class="card-body">
-            {% comment %} <h5 class="card-title">Card title</h5> {% endcomment %}
+            <h5 class="card-title">Card title</h5>
             <p class="card-text">
             Stay current with life political information. Read bills, follow politicians and track
             topics that are important to you.
@@ -16,5 +17,311 @@
     </div>
     <div class="row justify-content-center align-self-center">
         <a href="{%  url 'categories' %}" class="btn btn-success mt-5 ml-5 ">Next</a>
-    </div>
+    </div> {% endcomment %}
+
+
+    <!-- START HERO -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-5">
+                    <div class="mt-md-4">
+                        <div>
+                            <span class="badge badge-danger badge-pill">Alpha Version</span>
+                            <span class="text-white-50 ml-1">Welcome to the alpha version of this website</span>
+                        </div>
+                        <h2 class="text-white font-weight-normal mb-4 mt-3 hero-title">
+                            Politics in the palm of your hand
+                        </h2>
+
+                        <p class="mb-4 font-16 text-white-50">Stay current with life political information. Read bills, follow politicians and track topics that are important to you.</p>
+
+                        <a href="{%  url 'categories' %}" class="btn btn-success">Next <i class="mdi mdi-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-5 offset-md-2">
+                    <div class="text-md-right mt-3 mt-md-0">
+                        <img src="../../static/trackgovApp/assets/images/startup.svg" alt="" class="img-fluid" />
+                        {% comment %} <img src="trackgovApp/assets/images/startup.svg" alt="" class="img-fluid" /> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END HERO -->
+
+
+
+    <!-- START FEATURES 1 -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <h1 class="mt-0"><i class="mdi mdi-heart-multiple-outline"></i></h1>
+                        <h3>Features you'll <span class="text-danger">love</span></h3>
+                        <p class="text-muted mt-2">Trackgov comes with alot of benefits
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2 py-5 align-items-center">
+                <div class="col-lg-5">
+                    <img src="../../static/trackgovApp/assets/images/features-1.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6 offset-lg-1">
+                    <h3 class="font-weight-normal">Track bills</h3>
+                    <p class="text-muted mt-3">Hyper comes with a variety of ready-to-use applications and pages that help to speed up the development</p>
+
+                    <div class="mt-4">
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Track new bills</p>
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Track current bills progress</p>
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Track your geographical representatives based on your location</p>
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Login, signup, recover password</p>
+                    </div>
+
+                    {% comment %} <a href="" class="btn btn-primary btn-rounded mt-3">Read More <i class="mdi mdi-arrow-right ml-1"></i></a> {% endcomment %}
+
+                </div>
+            </div>
+
+            <div class="row pb-3 pt-5 align-items-center">
+                <div class="col-lg-6">
+                    <h3 class="font-weight-normal">Ability to discuss bills </h3>
+                    <p class="text-muted mt-3">The simplest and fastest way to build dashboard or admin panel. Hyper is built using the latest tech and tools and provide an easy way to customize anything, including an overall color schemes, layout, etc.</p>
+
+                    <div class="mt-4">
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Built with latest Bootstrap</p>
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Extensive use of SCSS variables</p>
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Well documented and structured code</p>
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Detailed Documentation</p>
+                    </div>
+
+                    <a href="" class="btn btn-success btn-rounded mt-3">Read More <i class="mdi mdi-arrow-right ml-1"></i></a>
+
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                    <img src="../../static/trackgovApp/assets/images/features-2.svg" class="img-fluid" alt="">
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- END FEATURES 1 -->
+
+
+
+    <!-- START FAQ -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <h1 class="mt-0"><i class="mdi mdi-frequently-asked-questions"></i></h1>
+                        <h3>Frequently Asked <span class="text-primary">Questions</span></h3>
+                        <p class="text-muted mt-2">Here are some of the basic types of questions for our customers. For more 
+                            <br>information please contact us.</p>
+
+                        <button type="button" class="btn btn-success btn-sm mt-2"><i class="mdi mdi-email-outline mr-1"></i> Email us your question</button>
+                        <button type="button" class="btn btn-info btn-sm mt-2 ml-1"><i class="mdi mdi-twitter mr-1"></i> Send us a tweet</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-5 offset-lg-1">
+                    <!-- Question/Answer -->
+                    <div>
+                        <div class="faq-question-q-box">Q.</div>
+                        <h4 class="faq-question text-body">Can I use this template for my client?</h4>
+                        <p class="faq-answer mb-4 pb-1 text-muted">Yup, the marketplace license allows you to use this theme
+                            in any end products.
+                            For more information on licenses, please refere <a href="https://themes.getbootstrap.com/licenses/" target="_blank">here</a>.</p>
+                    </div>
+
+                    <!-- Question/Answer -->
+                    <div>
+                        <div class="faq-question-q-box">Q.</div>
+                        <h4 class="faq-question text-body">How do I get help with the theme?</h4>
+                        <p class="faq-answer mb-4 pb-1 text-muted">Use our dedicated support email (support@coderthemes.com) to send your issues or feedback. We are here to help anytime.</p>
+                    </div>
+
+                </div>
+                <!--/col-lg-5 -->
+
+                <div class="col-lg-5">
+                    <!-- Question/Answer -->
+                    <div>
+                        <div class="faq-question-q-box">Q.</div>
+                        <h4 class="faq-question text-body">Can this theme work with Wordpress?</h4>
+                        <p class="faq-answer mb-4 pb-1 text-muted">No. This is a HTML template. It won't directly with
+                            wordpress, though you can convert this into wordpress compatible theme.</p>
+                    </div>
+
+                    <!-- Question/Answer -->
+                    <div>
+                        <div class="faq-question-q-box">Q.</div>
+                        <h4 class="faq-question text-body">Will you regularly give updates of Hyper?</h4>
+                        <p class="faq-answer mb-4 pb-1 text-muted">Yes, We will update the Hyper regularly. All the
+                            future updates would be available without any cost.</p>
+                    </div>
+
+                </div>
+                <!--/col-lg-5-->
+            </div>
+            <!-- end row -->
+
+        </div> <!-- end container-->
+    </section>
+    <!-- END FAQ -->
+
+    
+    <!-- START CONTACT -->
+    <section class="py-5 bg-light-lighten border-top border-bottom border-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <h3>Get In <span class="text-primary">Touch</span></h3>
+                        <p class="text-muted mt-2">Please fill out the following form and we will get back to you shortly. For more 
+                            <br>information please contact us.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center mt-3">
+                <div class="col-md-4">
+                    <p class="text-muted"><span class="font-weight-bold">Customer Support:</span><br> <span class="d-block mt-1">+1 234 56 7894</span></p>
+                    <p class="text-muted mt-4"><span class="font-weight-bold">Email Address:</span><br> <span class="d-block mt-1">info@gmail.com</span></p>
+                    <p class="text-muted mt-4"><span class="font-weight-bold">Office Address:</span><br> <span class="d-block mt-1">4461 Cedar Street Moro, AR 72368</span></p>
+                    <p class="text-muted mt-4"><span class="font-weight-bold">Office Time:</span><br> <span class="d-block mt-1">9:00AM To 6:00PM</span></p>
+                </div>
+
+                <div class="col-md-8">
+                    <form>
+                        <div class="row mt-4">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="fullname">Your Name</label>
+                                    <input class="form-control form-control-light" type="text" id="fullname" placeholder="Name...">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="emailaddress">Your Email</label>
+                                    <input class="form-control form-control-light" type="email" required="" id="emailaddress" placeholder="Enter you email...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-1">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="subject">Your Subject</label>
+                                    <input class="form-control form-control-light" type="text" id="subject" placeholder="Enter subject...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-1">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="comments">Message</label>
+                                    <textarea id="comments" rows="4" class="form-control form-control-light" placeholder="Type your message here..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-12 text-right">
+                                <button class="btn btn-primary">Send a Message <i
+                                    class="mdi mdi-telegram ml-1"></i> </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END CONTACT -->
+
 {% endblock content %}
+
+
+
+{% block footer %}
+        <!-- START FOOTER -->
+        {% comment %} <footer class="bg-dark py-5"> {% endcomment %}
+        <footer class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="assets/images/logo.png" alt="" class="logo-dark" height="18" />
+                        <p class="text-white-50 mt-4">Hyper makes it easier to build better websites with
+                            <br> great speed. Save hundreds of hours of design
+                            <br> and development by using it.</p>
+
+                        <ul class="social-list list-inline mt-3">
+                            <li class="list-inline-item text-center">
+                                <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item text-center">
+                                <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
+                            </li>
+                            <li class="list-inline-item text-center">
+                                <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item text-center">
+                                <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="col-lg-2 mt-3 mt-lg-0">
+                        <h5 class="text-white">Company</h5>
+
+                        <ul class="list-unstyled pl-0 mb-0 mt-3">
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">About Us</a></li>
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Documentation</a></li>
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Blog</a></li>
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Affiliate Program</a></li>
+                        </ul>
+
+                    </div>
+
+                    <div class="col-lg-2 mt-3 mt-lg-0">
+                        <h5 class="text-white">Apps</h5>
+
+                        <ul class="list-unstyled pl-0 mb-0 mt-3">
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Ecommerce Pages</a></li>
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Email</a></li>
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Social Feed</a></li>
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Projects</a></li>
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Tasks Management</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 mt-3 mt-lg-0">
+                        <h5 class="text-white">Discover</h5>
+
+                        <ul class="list-unstyled pl-0 mb-0 mt-3">
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Help Center</a></li>
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Our Products</a></li>
+                            <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mt-5">
+                            <p class="text-white-50 mt-4 text-center mb-0"> © Karan Ganesh <script>document.write(new Date().getFullYear())</script></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- END FOOTER -->
+{% endblock footer %}
+    
