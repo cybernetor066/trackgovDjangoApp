@@ -41,7 +41,7 @@
                     <li class="side-nav-item">
                         <a href="apps-calendar.html" class="side-nav-link">
                             <i class="uil-calender"></i>
-                            <span> Calendar </span>
+                            <span> Categories </span>
                         </a>
                     </li>
 
@@ -70,33 +70,8 @@
         <!-- Start Page Content here -->
         <!-- ============================================================== -->
 
-        <div class="content-page">
+        <div class="content-page content-page-bill-list-custom">
             <div class="content">
-                <!-- Topbar Start -->
-                <div class="navbar-custom">
-                    <ul class="list-unstyled topbar-right-menu float-right mb-0">
-                        <li class="dropdown notification-list d-lg-none">
-                            <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <i class="dripicons-search noti-icon"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
-                                <form class="p-3">
-                                    <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
-                                </form>
-                            </div>
-                        </li>                        
-                    </ul>
-                    
-                    
-                    <button class="button-menu-mobile open-left disable-btn">
-                        <i class="mdi mdi-menu"></i>
-                    </button>
-                    
-                    <div class="app-search dropdown d-none d-lg-block">            
-                    </div>
-                </div>
-                <!-- end Topbar -->
-
                 <!-- Start Content-->
                 <div class="container-fluid">
                     {% comment %} <!-- start page title -->
@@ -122,7 +97,7 @@
                                     <tr>
                                         <td>
                                             <span class="bills-list-title-custom">
-                                                <a id="" href="{% url 'dashboardbillprogress' %}">ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]</a>
+                                                <a id="" href="{% url 'dashboardbilldetail' %}">ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]</a>
                                             </span> 
                                         </td>
                                         <td>
@@ -145,12 +120,7 @@
                     </div>
                     <br />
                     <!-- end row -->
-                    <br />
-                    <br />
 
-
-
-    
 
                     {% comment %} Start row {% endcomment %}
                     <div class="row">
@@ -164,29 +134,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for i in ourRange1 %}
+                                {% for entries in bill_list %}
                                     <tr>
                                         <td>
                                             <span class="bills-list-title-custom">
-                                                <a id="" href="{% url 'dashboardbillprogress' %}">ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]</a>
+                                                <a id="" href="{% url 'dashboardbilldetail' %}">{{ entries.title_of_bill }}</a>
                                             </span> 
                                         </td>
                                         <td>
                                             <!-- Switch-->
                                             <div>
-                                                <input type="checkbox" id="switch{{ i }}" data-switch="success"/>
-                                                <label for="switch{{ i }}" data-on-label="Yes" data-off-label="No" class="mb-0 d-block"></label>
+                                                <input type="checkbox" id="switch{{ entries.id }}" data-switch="success"/>
+                                                <label for="switch{{ entries.id }}" data-on-label="Yes" data-off-label="No" class="mb-0 d-block"></label>
                                             </div>
                                         </td>
                                         <td>
                                             <a
                                                 id="main_0_content_0_lvResults_hlBill_0"
-                                                aria-label="Bill link - ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]"
+                                                aria-label="Bill link - {{ entries.title_of_bill }}"
                                                 rel="noopener noreferrer"
                                                 href="{% url 'dashboardbilldetail' %}"
                                                 target=""
                                                 >
-                                                <button class="btn btn-primary font-11">READ</button>
+                                                <button class="btn btn-rounded btn-info font-11">READ</button>
                                             </a>
                                         </td>
                                         <td>
@@ -239,19 +209,67 @@
 
 
 
-{% comment %} <script>
-    var coll = document.getElementsByClassName("collapsible-custom");
-    var i;
 
-    for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function() {
-        this.classList.toggle("active-custom");
-        var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-        content.style.display = "none";
-        } else {
-        content.style.display = "block";
-        }
-    });
-    }
-</script> {% endcomment %}
+{% block footer %}
+    <!-- START FOOTER -->
+    {% comment %} <footer class="bg-dark py-5"> {% endcomment %}
+    <footer class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 shift-footer-right">
+                    <img src="../../static/trackgovApp/assets/images/logo.png" alt="" class="logo-dark" height="18" />
+                    <p class="text-white-50 mt-4">Hyper makes it easier to build better websites with
+                        <br> great speed. Save hundreds of hours of design
+                        <br> and development by using it.</p>
+
+                    <ul class="social-list list-inline mt-3">
+                        <li class="list-inline-item text-center">
+                            <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="col-lg-2 mt-3 mt-lg-0">
+                    <h5 class="text-white">Company</h5>
+
+                    <ul class="list-unstyled pl-0 mb-0 mt-3">
+                        <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">About Us</a></li>
+                        <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Blog</a></li>
+                        <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Contact</a></li>
+                    </ul>
+
+                </div>
+
+                <div class="col-lg-2 mt-3 mt-lg-0">
+                    <h5 class="text-white">Discover</h5>
+
+                    <ul class="list-unstyled pl-0 mb-0 mt-3">
+                        <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Help Center</a></li>
+                        <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Our Products</a></li>
+                        <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Privacy</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 shift-footer-right1">
+                    <div class="">
+                        <p class="text-white-50 text-center mb-3"> © Karan Ganesh <script>document.write(new Date().getFullYear()) </script> - trackgov.com </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- END FOOTER -->
+{% endblock footer %}

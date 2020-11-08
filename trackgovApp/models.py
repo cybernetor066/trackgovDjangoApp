@@ -15,6 +15,33 @@ class UserRegistration(models.Model):
 
 
 
+
+
+# Create your models here.
+class HouseOfRepsBills(models.Model):
+    title_of_bill = models.TextField(db_column='title_of_bill', blank=True, null=True)  # Field name made lowercase.
+    date = models.TextField(db_column='date', blank=True, null=True)  # Field name made lowercase.
+    category = models.TextField(db_column='category', blank=True, null=True)  # Field name made lowercase.
+    chamber = models.TextField(db_column='chamber', blank=True, null=True)  # Field name made lowercase.
+    status = models.TextField(db_column='status', blank=True, null=True)  # Field name made lowercase.
+    stage_of_bill = models.TextField(db_column='stage_of_bill', blank=True, null=True)  # Field name made lowercase.
+    portfolio = models.TextField(db_column='portfolio', blank=True, null=True)  # Field name made lowercase.
+    summary = models.TextField(db_column='summary', blank=True, null=True)  # Field name made lowercase.
+    link_to_bill = models.TextField(db_column='link_to_bill', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        # managed = False
+        db_table = 'hrepsbills'
+
+
+
+
+
+
+
+
+
+
 # Remove the firstname and lastname from the models
 
 

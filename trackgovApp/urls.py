@@ -13,13 +13,15 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     
     path('dashboardstarter/', views.dashboard_starter, name='dashboardstarter'),
-    path('dashboardprofile/', views.dashboard_profile, name='dashboardprofile'),
+    path('dashboardbillprogress/', views.dashboard_bill_progress, name='dashboardbillprogress'),
+
 
     path('categories/', views.categories, name='categories'),
     path('bills/', views.bills, name='bills'),
     path('dashboardbillslist/', views.dashboard_bills_list, name='dashboardbillslist'),
     path('dashboardbilldetail/', views.dashboard_bill_detail, name='dashboardbilldetail'),
-    path('dashboardbillprogress/', views.dashboard_bill_progress, name='dashboardbillprogress'),
+    path('politicianbio/', views.politician_bio, name='politicianbio'),
+
     path('error404/', views.error404, name='error404'),
     path('error500/', views.error500, name='error500'),
     path('maintenance/', views.maintenance, name='maintenance'),

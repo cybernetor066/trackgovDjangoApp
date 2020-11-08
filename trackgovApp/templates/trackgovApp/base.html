@@ -22,64 +22,193 @@
 <body class="loading authentication-bg" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":true, "showRightSidebarOnStart": true}'>
     {% block navMenu %}
         {% comment %} Grey with black text {% endcomment %}
+        {% comment %} <nav class="navbar navbar-expand-sm bg-success-custom navbar-dark sticky-top"> {% endcomment %}
         <nav class="navbar navbar-expand-sm bg-success-custom navbar-dark sticky-top">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            {% comment %} <a class="navbar-brand" href="#">
-                <img src="../../static/trackgovApp/assets/logo3.png" class="img-fluid w-25 myLogo" alt="">
-            </a> {% endcomment %}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <!-- LOGO -->
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link navbar-brand">
+                            <span class="logo-lg">
+                                <img src="../../static/trackgovApp/assets/images/logo.png" alt="" height="16">
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item active mr-3">
+                        <a class="nav-link" href="{%  url 'home' %}">Home</a>
+                    </li>
 
-            <ul class="navbar-nav">
-                <!-- LOGO -->
-                <li class="nav-item">
-                <a href="index.html" class="nav-link navbar-brand">
-                    <span class="logo-lg">
-                        <img src="../../static/trackgovApp/assets/images/logo.png" alt="" height="16">
-                    </span>
-                </a>
-                </li>
-                <li class="nav-item active mr-5">
-                <a class="nav-link" href="{%  url 'home' %}">Home</a>
-                </li>
-                <li class="nav-item mr-5">
-                <a class="nav-link" href="{%  url 'home' %}">About</a>
-                </li>
-                <li class="nav-item mr-5">
-                <a class="nav-link" href="{%  url 'home' %}">Contact</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="{%  url 'faq' %}">Faq</a>
-                </li>
-            </ul>
+                    {% comment %} <li class="nav-item mr-3">
+                        <a class="nav-link" href="{%  url 'home' %}">About</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{%  url 'home' %}">Contact</a>
+                    </li> {% endcomment %}
+
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{%  url 'faq' %}">Faq</a>
+                    </li>
+                    <li>
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control dropdown-toggle" placeholder="Search..." id="top-search">
+                                {% comment %} <span class="mdi mdi-magnify search-icon"></span> {% endcomment %}
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
 
 
 
-            {% comment %} <div>
-                <form>
-                    <div class="input-group">
-                        <input type="text" class="form-control dropdown-toggle" placeholder="Search..." id="top-search">
-                        <span class="mdi mdi-magnify search-icon"></span>
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit">Search</button>
+                {% comment %} <div>
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control dropdown-toggle" placeholder="Search..." id="top-search">
+                            <span class="mdi mdi-magnify search-icon"></span>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </div>
                         </div>
-                    </div>
 
-                </form>
-            </div> {% endcomment %}
+                    </form>
+                </div> {% endcomment %}
 
-            <ul class="navbar-nav ml-auto navbar-right">
-                <li>
-                    <a class="nav-link right-bar-toggle" href="javascript: void(0);">
-                        <span class="dripicons-gear noti-icon"> Settings</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{%  url 'login' %}" class="nav-link">Login<i class=""></i></a>
-                </li>
-                <li>
-                    <a href="{%  url 'signup' %}" class="nav-link ml-3">Signup<i class="fa fa-telegram fa-lg"></i></a>
-                </li>
-            </ul>
-            {% comment %} </div> {% endcomment %}
+                <ul class="navbar-nav ml-auto navbar-right">
+                    <li class="nav-link">
+                        <div>
+                            <form>
+                                <div class="input-group w-75">
+                                    <span class="">Choose country: </span>
+                                    &nbsp;
+                                    &nbsp;
+                                    <label for="countryList"></label>
+
+                                    <select name="countryList" id="countryList" class="form-control select-dropdown">
+                                    <option value="0">Select Country</option>
+                                    <option value="1">Australia</option>
+                                    <option value="2">India</option>
+                                    <option value="3">Nigeria</option>
+                                    <option value="5">More countries coming soon...</option>
+                                    </select>                                    
+                                    {% comment %} <select class="gds-cr" country-data-region-id="gds-cr-one" data-language="en"></select> {% endcomment %}
+                                </div>
+                            </form>
+                        </div>
+
+
+
+                    </li>
+                    {% comment %} <li class="dropdown notification-list"> {% endcomment %}
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <i class="dripicons-bell noti-icon"></i>
+                            <span class="noti-icon-badge"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
+
+                            <!-- item-->
+                            <div class="dropdown-item noti-title">
+                                <h5 class="m-0">
+                                    <span class="float-right">
+                                        <a href="javascript: void(0);" class="text-dark">
+                                            <small>Clear All</small>
+                                        </a>
+                                    </span>Notification
+                                </h5>
+                            </div>
+
+                            <div style="max-height: 230px;" data-simplebar>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-primary">
+                                        <i class="mdi mdi-comment-account-outline"></i>
+                                    </div>
+                                    <p class="notify-details">Caleb Flakelar commented on Admin
+                                        <small class="text-muted">1 min ago</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-info">
+                                        <i class="mdi mdi-account-plus"></i>
+                                    </div>
+                                    <p class="notify-details">New user registered.
+                                        <small class="text-muted">5 hours ago</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon">
+                                        <img src="assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                                    <p class="notify-details">Cristina Pride</p>
+                                    <p class="text-muted mb-0 user-msg">
+                                        <small>Hi, How are you? What about our next meeting</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-primary">
+                                        <i class="mdi mdi-comment-account-outline"></i>
+                                    </div>
+                                    <p class="notify-details">Caleb Flakelar commented on Admin
+                                        <small class="text-muted">4 days ago</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon">
+                                        <img src="assets/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                                    <p class="notify-details">Karen Robinson</p>
+                                    <p class="text-muted mb-0 user-msg">
+                                        <small>Wow ! this admin looks good and awesome design</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-info">
+                                        <i class="mdi mdi-heart"></i>
+                                    </div>
+                                    <p class="notify-details">Carlos Crouch liked
+                                        <b>Admin</b>
+                                        <small class="text-muted">13 days ago</small>
+                                    </p>
+                                </a>
+                            </div>
+
+                            <!-- All-->
+                            <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                                View All
+                            </a>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <a class="nav-link right-bar-toggle" href="javascript: void(0);">
+                            <span class="dripicons-gear noti-icon"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{%  url 'login' %}" class="nav-link">Login<i class=""></i></a>
+                    </li>
+                    <li>
+                        <a href="{%  url 'signup' %}" class="nav-link">Signup<i class="fa fa-telegram fa-lg"></i></a>
+                    </li>
+                </ul>
+                {% comment %} </div> {% endcomment %}
+            </div>
         </nav>
     {% endblock navMenu %}
 
@@ -90,12 +219,74 @@
         {% endblock content %}
     </div>
 
-    {% block footer %}
-        {% comment %} <p class="mt-5 mb-3 text-muted">(c) Karan Ganesh 2020</p> {% endcomment %}
-        <footer class="footer footer-alt">
-            © Karan Ganesh <script>document.write(new Date().getFullYear())</script>
-        </footer>
-    {% endblock footer %}
+
+
+
+    <div class="container-fluid">
+        {% block footer %}
+            <!-- START FOOTER -->
+            {% comment %} <footer class="bg-dark py-5"> {% endcomment %}
+            <footer class="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 shift-footer-right">
+                            <img src="../../static/trackgovApp/assets/images/logo.png" alt="" class="logo-dark" height="18" />
+                            <p class="text-white-50 mt-4">Hyper makes it easier to build better websites with
+                                <br> great speed. Save hundreds of hours of design
+                                <br> and development by using it.</p>
+
+                            <ul class="social-list list-inline mt-3">
+                                <li class="list-inline-item text-center">
+                                    <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
+                                </li>
+                                <li class="list-inline-item text-center">
+                                    <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
+                                </li>
+                                <li class="list-inline-item text-center">
+                                    <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
+                                </li>
+                                <li class="list-inline-item text-center">
+                                    <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="col-lg-2 mt-3 mt-lg-0">
+                            <h5 class="text-white">Company</h5>
+
+                            <ul class="list-unstyled pl-0 mb-0 mt-3">
+                                <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">About Us</a></li>
+                                <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Blog</a></li>
+                                <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Contact</a></li>
+                            </ul>
+
+                        </div>
+
+                        <div class="col-lg-2 mt-3 mt-lg-0">
+                            <h5 class="text-white">Discover</h5>
+
+                            <ul class="list-unstyled pl-0 mb-0 mt-3">
+                                <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Help Center</a></li>
+                                <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Our Products</a></li>
+                                <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Privacy</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4 shift-footer-right1">
+                            <div class="">
+                                <p class="text-white-50 text-center mb-3"> © Karan Ganesh <script>document.write(new Date().getFullYear()) </script> - trackgov.com </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- END FOOTER -->
+        {% endblock footer %}
+    </div>
 
 
     <!-- bundle -->

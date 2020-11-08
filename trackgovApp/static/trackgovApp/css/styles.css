@@ -173,3 +173,36 @@ margin-left: 5px;
     /* background-color: rgb(18, 87, 87); */
     border-bottom: solid 1px rgb(18, 87, 87);
 }
+
+.content-page {
+    margin-top: -5% !important;
+}
+
+
+.content-page-bill-list-custom {
+    margin-top: -3.6% !important;
+}
+
+.content-page-categories-custom {
+    margin-top: -3.0% !important;
+}
+
+
+.shift-footer-right {
+    margin-left: 16% !important;
+}
+
+
+
+.shift-footer-right1 {
+    margin-left: 43% !important;
+}
+
+
+
+
+.link-to-politicianbio-custom > a:hover {
+    /* color: inherit; */
+    color: white !important;
+    text-decoration: underline;
+}

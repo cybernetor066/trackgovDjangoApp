@@ -1,186 +1,268 @@
 {% extends 'trackgovApp/base.html' %}
 {% block title %}Categories Section{% endblock title %}
 {% block content %}
+    {% comment %} {% block navMenu %}
 
-    <div class="container my-4">
+    {% endblock navMenu %} {% endcomment %}
 
-        <p class="font-weight-bold ml-5">SELECT AT LEAST ONE TOPIC</p>
-        <form>
-            <div class="row w-50 ml-5">
-                <div class="col-sm">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check1">
-                        <label class="custom-control-label" for="check1">Check me</label>
-                    </div>
+
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left-side-menu">
+
+            <div class="h-100" id="left-side-menu-container" data-simplebar>
+
+                <!--- Sidemenu -->
+                <ul class="metismenu side-nav">
+
+                    <li class="side-nav-title side-nav-item">Navigation</li>
+
+                    <li class="side-nav-item">
+                        <a href="javascript: void(0);" class="side-nav-link">
+                            <i class="uil-home-alt"></i>
+                            <span class="badge badge-success float-right">4</span>
+                            <span> Dashboards </span>
+                        </a>
+                        <ul class="side-nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="dashboard-analytics.html">Analytics</a>
+                            </li>
+                            <li>
+                                <a href="dashboard-crm.html">CRM</a>
+                            </li>
+                            <li>
+                                <a href="index.html">Ecommerce</a>
+                            </li>
+                            <li>
+                                <a href="dashboard-projects.html">Projects</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check2">
-                        <label class="custom-control-label" for="check2">Business</label>
-                    </div>
+
+                    <li class="side-nav-title side-nav-item">Apps</li>
+
+                    <li class="side-nav-item">
+                        <a href="apps-calendar.html" class="side-nav-link">
+                            <i class="uil-calender"></i>
+                            <span> Calendar </span>
+                        </a>
                     </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check3" checked>
-                        <label class="custom-control-label" for="check3">Civil Rights</label>
-                    </div>
+
+                    <li class="side-nav-item">
+                        <a href="apps-chat.html" class="side-nav-link">
+                            <i class="uil-comments-alt"></i>
+                            <span> Chat </span>
+                        </a>
                     </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check4" checked>
-                        <label class="custom-control-label" for="check4">Drug policy</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check5">
-                        <label class="custom-control-label" for="check5">Economy</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check5">
-                        <label class="custom-control-label" for="check5">Education</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check4" checked>
-                        <label class="custom-control-label" for="check4">Enviroment</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check5">
-                        <label class="custom-control-label" for="check5">Food/Water</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check5">
-                        <label class="custom-control-label" for="check5">Foreign Policy</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check4" checked>
-                        <label class="custom-control-label" for="check4">Guns</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check5">
-                        <label class="custom-control-label" for="check5">Healthcare</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check5">
-                        <label class="custom-control-label" for="check5">Immigration</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check4" checked>
-                        <label class="custom-control-label" for="check4">Jobs/Wages</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check5">
-                        <label class="custom-control-label" for="check5">Key Context</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check5">
-                        <label class="custom-control-label" for="check5">Law Enforcement</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check4" checked>
-                        <label class="custom-control-label" for="check4">LGBTQ+</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check5">
-                        <label class="custom-control-label" for="check5">Millitary</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check5">
-                        <label class="custom-control-label" for="check5">Public Office</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check4" checked>
-                        <label class="custom-control-label" for="check4">Religion</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check5">
-                        <label class="custom-control-label" for="check5">Social Programs</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check5">
-                        <label class="custom-control-label" for="check5">Taxes</label>
-                    </div>
-                    </li>
-                    <li class="list-group-item">
-                    <!-- Default checked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check5">
-                        <label class="custom-control-label" for="check5">Technology</label>
-                    </div>
-                    </li>                                                  
+
+        
                 </ul>
-                </div>
+
+                
+                <!-- End Sidebar -->
+
+                <div class="clearfix"></div>
 
             </div>
+            <!-- Sidebar -left -->
 
-            <div class="row mt-5 mb-5">
-            <a href="{% url 'dashboardbillslist' %}">
-                <div class="col-sm">
-                    <div class="col-auto my-1 row justify-content-center align-self-center">
-                        {% comment %} <button type="submit" class="btn btn-primary">Submit</button> {% endcomment %}
-                        Submit
-                    </div>
-                </div>
-            </div>
-            </a>
-        </form>
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page content-page-categories-custom">
+            <div class="content">
+                <div class="container-fluid">
+
+                    {% comment %} <p class="font-weight-bold ml-5">SELECT AT LEAST ONE TOPIC</p> {% endcomment %}
+                    <form>
+                        <div class="row w-50 ml-5">
+                            <div class="col-sm">
+                            <p class="font-weight-bold">SELECT AT LEAST ONE TOPIC</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check1">
+                                    <label class="custom-control-label" for="check1">Check me</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check2">
+                                    <label class="custom-control-label" for="check2">Business</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check3" checked>
+                                    <label class="custom-control-label" for="check3">Civil Rights</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check4" checked>
+                                    <label class="custom-control-label" for="check4">Drug policy</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check5">
+                                    <label class="custom-control-label" for="check5">Economy</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check5">
+                                    <label class="custom-control-label" for="check5">Education</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check4" checked>
+                                    <label class="custom-control-label" for="check4">Enviroment</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check5">
+                                    <label class="custom-control-label" for="check5">Food/Water</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check5">
+                                    <label class="custom-control-label" for="check5">Foreign Policy</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check4" checked>
+                                    <label class="custom-control-label" for="check4">Guns</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check5">
+                                    <label class="custom-control-label" for="check5">Healthcare</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check5">
+                                    <label class="custom-control-label" for="check5">Immigration</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check4" checked>
+                                    <label class="custom-control-label" for="check4">Jobs/Wages</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check5">
+                                    <label class="custom-control-label" for="check5">Key Context</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check5">
+                                    <label class="custom-control-label" for="check5">Law Enforcement</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check4" checked>
+                                    <label class="custom-control-label" for="check4">LGBTQ+</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check5">
+                                    <label class="custom-control-label" for="check5">Millitary</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check5">
+                                    <label class="custom-control-label" for="check5">Public Office</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check4" checked>
+                                    <label class="custom-control-label" for="check4">Religion</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check5">
+                                    <label class="custom-control-label" for="check5">Social Programs</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check5">
+                                    <label class="custom-control-label" for="check5">Taxes</label>
+                                </div>
+                                </li>
+                                <li class="list-group-item">
+                                <!-- Default checked -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="check5">
+                                    <label class="custom-control-label" for="check5">Technology</label>
+                                </div>
+                                </li>                                                  
+                            </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="mt-3 mb-5 ml-5">
+                            <a href="{%  url 'dashboardbillslist' %}" class="btn btn-success btn-lg ml-2">Next<i class="mdi mdi-arrow-right ml-1"></i></a>
+                        </div>
+
+                    </form>
+
+                </div>                           
+
+            </div> <!-- content -->
+
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
 
     </div>
+    <!-- END wrapper -->
 
 
 {% endblock content %}

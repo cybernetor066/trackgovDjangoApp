@@ -19,7 +19,7 @@ from rest_framework import status, pagination
 from django.core.paginator import Paginator , EmptyPage, PageNotAnInteger
 
 
-
+from .models import UserRegistration, HouseOfRepsBills
 from .forms import UserRegistrationForm, UserLoginForm
 
 from bson import ObjectId
@@ -200,15 +200,28 @@ def dashboard(request):
     return render(request, 'trackgovApp/dashboard.html')
 
 
+
+
+
+
+
+
+
 # Dashboard starter view
 def dashboard_starter(request):
     return render(request, 'trackgovApp/starter.html')
 
+# Dashboard order details view
+def dashboard_bill_progress(request):
+    return render(request, 'trackgovApp/bills-progress.html')
 
 
-# Dashboard profile view
-def dashboard_profile(request):
-    return render(request, 'trackgovApp/profile.html')
+
+
+
+
+
+
 
 # # Dashboard bills list page view
 # def dashboard_bills_list(request):
@@ -223,10 +236,14 @@ def bills(request):
 
 # Dashboard bills list page view
 def dashboard_bills_list(request):
-    context = { 
-        'ourRange0': range(3),
-        'ourRange1': range(9)
-        }
+    # context = { 
+    #     'ourRange0': range(3),
+    #     'ourRange1': range(9)
+    #     }
+    bill_list = HouseOfRepsBills.objects.all()
+    context = {
+        'bill_list': bill_list
+    }
     return render(request, 'trackgovApp/bills-list.html', context=context)
 
 
@@ -238,11 +255,9 @@ def dashboard_bill_detail(request):
         }
     return render(request, 'trackgovApp/bill-detail.html', context=context)
 
-
-# Dashboard order details view
-def dashboard_bill_progress(request):
-    return render(request, 'trackgovApp/bills-progress.html')
-
+# politician's bio view
+def politician_bio(request):
+    return render(request, 'trackgovApp/politician-bio.html')
 
 
 # error 404 function
