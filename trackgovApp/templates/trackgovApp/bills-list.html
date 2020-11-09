@@ -97,7 +97,7 @@
                                     <tr>
                                         <td>
                                             <span class="bills-list-title-custom">
-                                                <a id="" href="{% url 'dashboardbilldetail' %}">ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]</a>
+                                                <a id="" href="{% url 'dashboardbilldetail' 1 %}">ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]</a>
                                             </span> 
                                         </td>
                                         <td>
@@ -138,7 +138,7 @@
                                     <tr>
                                         <td>
                                             <span class="bills-list-title-custom">
-                                                <a id="" href="{% url 'dashboardbilldetail' %}">{{ entries.title_of_bill }}</a>
+                                                <a id="" href="{% url 'dashboardbilldetail' entries.id %}">{{ entries.title_of_bill }}</a>
                                             </span> 
                                         </td>
                                         <td>
@@ -149,13 +149,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <a
-                                                id="main_0_content_0_lvResults_hlBill_0"
-                                                aria-label="Bill link - {{ entries.title_of_bill }}"
-                                                rel="noopener noreferrer"
-                                                href="{% url 'dashboardbilldetail' %}"
-                                                target=""
-                                                >
+                                            <a href="{{ entries.link_to_bill }}" >
                                                 <button class="btn btn-rounded btn-info font-11">READ</button>
                                             </a>
                                         </td>

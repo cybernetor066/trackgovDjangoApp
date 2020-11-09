@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class UserRegistration(models.Model):
@@ -28,6 +29,9 @@ class HouseOfRepsBills(models.Model):
     portfolio = models.TextField(db_column='portfolio', blank=True, null=True)  # Field name made lowercase.
     summary = models.TextField(db_column='summary', blank=True, null=True)  # Field name made lowercase.
     link_to_bill = models.TextField(db_column='link_to_bill', blank=True, null=True)  # Field name made lowercase.
+
+    # def get_absolute_url(self):
+    #     return reverse('trackgovApp:dashboardbilldetail', args=[str(self.id)])
 
     class Meta:
         # managed = False

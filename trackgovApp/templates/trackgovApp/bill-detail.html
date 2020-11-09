@@ -108,7 +108,7 @@
                     <div class="row mt-1">
                         <div class="col-12">
                             <div class="page-title-box">
-                                <h4 class="page-title">ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]</h4>
+                                <h4 class="page-title">{{ bill.title_of_bill }}</h4>
                             </div>
                         </div>
                     </div>     
@@ -118,22 +118,40 @@
                         <div class="col-lg-7 col-md-10 col-sm-11">
     
                             <div class="horizontal-steps mt-4 mb-4 pb-5">
-                                <div class="horizontal-steps-content">
-                                    <div class="step-item">
-                                        <span data-toggle="tooltip" data-placement="bottom" title="" data-original-title="20/08/2018 07:24 PM">Intro House</span>
+                                {% if 'Before House Of Representatives' in bill.status %}
+                                    <div class="horizontal-steps-content">
+                                        <div class="step-item current">
+                                            <span>Intro House</span>
+                                        </div>
+                                        <div class="step-item">
+                                            <span>Passed House</span>
+                                        </div>
+                                        <div class="step-item">
+                                            <span>Intro Senate</span>
+                                        </div>
+                                        <div class="step-item">
+                                            <span>Passed Senate</span>
+                                        </div>
                                     </div>
-                                    <div class="step-item current">
-                                        <span data-toggle="tooltip" data-placement="bottom" title="" data-original-title="21/08/2018 11:32 AM">Passed House</span>
+                                    <div class="process-line" style="width: 0%;"></div>
+                                {% else %}
+                                    <div class="horizontal-steps-content">
+                                        <div class="step-item">
+                                            <span>Intro House</span>
+                                        </div>
+                                        <div class="step-item current">
+                                            <span>Passed House</span>
+                                        </div>
+                                        <div class="step-item">
+                                            <span>Intro Senate</span>
+                                        </div>
+                                        <div class="step-item">
+                                            <span>Passed Senate</span>
+                                        </div>
                                     </div>
-                                    <div class="step-item">
-                                        <span>Intro Senate</span>
-                                    </div>
-                                    <div class="step-item">
-                                        <span>Passed Senate</span>
-                                    </div>
-                                </div>
+                                    <div class="process-line" style="width: 33%;"></div>
+                                {% endif %}
     
-                                <div class="process-line" style="width: 33%;"></div>
                             </div>
                         </div>
                     </div>
@@ -172,7 +190,7 @@
                                                 <td>27 Oct 2020</td>
                                             </tr>
                                             <tr>
-                                                <td>Second reading debate</td>
+                                                <td>{{ bill.stage_of_bill }}</td>
                                                 <td>27 Oct 2020</td>
                                             </tr>
                                             </tbody>
@@ -194,29 +212,26 @@
                                         <dl class="">
                                             <dt>Date</dt>
                                             <dd>
-                                                03 Apr 2001&nbsp;
+                                                {{ bill.date }} &nbsp;
                                             </dd>
                                             <dt>Chamber</dt>
                                             <dd>
-                                                Senate&nbsp;
+                                                {{ bill.chamber }} &nbsp;
                                             </dd>
                                             <dt>Status</dt>
                                             <dd>
-                                                Not Proceeding&nbsp;
+                                                {{ bill.status }} &nbsp;
                                             </dd>
                                             <dt>
                                                 Sponsor
                                             </dt>
                                             <dd>
-                                                BOURNE, Vicki&nbsp;
+                                                {{ bill.sponsor }} &nbsp;
                                             </dd>
 
                                             <dt>Summary</dt>
                                             <dd>
-                                                Amends the:
-                                                Australian Broadcasting Corporation Act 1983
-                                                in relation to the provision of online and multichannelling services; and
-                                                Broadcasting Services Act 1992 to enable the Australian Broadcasting Corporation and Special Broadcasting Service Corporation to provide unrestricted multichannelling services.&nbsp;
+                                               {{ bill.summary }} &nbsp;
                                             </dd>
                                         </dl>
 
@@ -301,7 +316,7 @@
                                                             id="main_0_content_0_lvResults_hlBill_0"
                                                             aria-label="Bill link - ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]"
                                                             rel="noopener noreferrer"
-                                                            href="{% url 'dashboardbilldetail' %}"
+                                                            href=""
                                                             target=""
                                                             >
                                                             <button class="btn btn-rounded btn-info font-11">READ</button>
@@ -315,7 +330,7 @@
                                                             id="main_0_content_0_lvResults_hlBill_0"
                                                             aria-label="Bill link - ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]"
                                                             rel="noopener noreferrer"
-                                                            href="{% url 'dashboardbilldetail' %}"
+                                                            href=""
                                                             target=""
                                                             >
                                                             <button class="btn btn-rounded btn-info font-11">READ</button>
@@ -336,7 +351,7 @@
                                                         id="main_0_content_0_lvResults_hlBill_0"
                                                         aria-label="Bill link - ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]"
                                                         rel="noopener noreferrer"
-                                                        href="{% url 'dashboardbilldetail' %}"
+                                                        href=""
                                                         target=""
                                                         >
                                                         <button class="btn btn-rounded btn-info font-11">READ</button>
@@ -350,7 +365,7 @@
                                                         id="main_0_content_0_lvResults_hlBill_0"
                                                         aria-label="Bill link - ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]"
                                                         rel="noopener noreferrer"
-                                                        href="{% url 'dashboardbilldetail' %}"
+                                                        href=""
                                                         target=""
                                                         >
                                                         <button class="btn btn-rounded btn-info font-11">READ</button>

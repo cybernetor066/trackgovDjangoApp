@@ -2,6 +2,8 @@ from django.urls import path, include
 
 from . import views
 
+# app_name = 'trackgovApp'
+
 urlpatterns = [
     path('', views.index, name='index'),
     path(r'comments/', include('django_comments_xtd.urls')),
@@ -19,7 +21,7 @@ urlpatterns = [
     path('categories/', views.categories, name='categories'),
     path('bills/', views.bills, name='bills'),
     path('dashboardbillslist/', views.dashboard_bills_list, name='dashboardbillslist'),
-    path('dashboardbilldetail/', views.dashboard_bill_detail, name='dashboardbilldetail'),
+    path('dashboardbilldetail/<int:bill_id>/', views.dashboard_bill_detail, name='dashboardbilldetail'),
     path('politicianbio/', views.politician_bio, name='politicianbio'),
 
     path('error404/', views.error404, name='error404'),

@@ -242,17 +242,21 @@ def dashboard_bills_list(request):
     #     }
     bill_list = HouseOfRepsBills.objects.all()
     context = {
+        'ourRange0': range(3),
         'bill_list': bill_list
     }
     return render(request, 'trackgovApp/bills-list.html', context=context)
 
 
 # Dashboard bills detail page view
-def dashboard_bill_detail(request):
-    context = { 
-        'ourRange0': range(3),
-        'ourRange1': range(9)
-        }
+def dashboard_bill_detail(request, bill_id):
+    # context = { 
+    #     'ourRange0': range(3),
+    #     'ourRange1': range(9)
+    #     }
+    context = {
+        'bill': get_object_or_404(HouseOfRepsBills, pk=bill_id)
+    }
     return render(request, 'trackgovApp/bill-detail.html', context=context)
 
 # politician's bio view
