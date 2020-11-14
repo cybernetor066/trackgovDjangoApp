@@ -71,7 +71,10 @@ body {
 
 
 .myLogo {
-    max-height: 70px;
+    /* max-height: 70px; */
+    /* min-height: 64px !important; */
+    /* max-height: 46px !important; */
+    /* min-width: 9px !important; */
     /* width: 50px; */
 }
 
@@ -79,7 +82,7 @@ body {
 
 
 .bg-success-custom {
-    background-color: rgba(46, 46, 158, 0.87);
+    background-color: rgba(28, 28, 41, 0.87);
 }
 
 

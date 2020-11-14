@@ -1,6 +1,7 @@
 import time, bson, json, os, sys, datetime, string, random
+from urllib.parse import urlencode
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.http.response import JsonResponse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.mail import BadHeaderError, send_mail, EmailMessage
@@ -20,7 +21,7 @@ from django.core.paginator import Paginator , EmptyPage, PageNotAnInteger
 
 
 from .models import UserRegistration, HouseOfRepsBills
-from .forms import UserRegistrationForm, UserLoginForm
+from .forms import UserRegistrationForm, UserLoginForm, CategoriesForm
 
 from bson import ObjectId
 import pymongo
@@ -188,13 +189,6 @@ def recoverpw(request):
     return render(request, 'trackgovApp/recoverpw.html', {"form": form})
 
 
-
-
-# categories view
-def categories(request):
-    return render(request, 'trackgovApp/categories.html')
-
-
 # Dashboard view
 def dashboard(request):
     return render(request, 'trackgovApp/dashboard.html')
@@ -223,29 +217,139 @@ def dashboard_bill_progress(request):
 
 
 
-# # Dashboard bills list page view
-# def dashboard_bills_list(request):
-#     return render(request, 'trackgovApp/bills-list.html')
 
 
+# categories view
+def categories(request):
+    if request.method =='POST':
+        # print("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!!")
+        form =  CategoriesForm(request.POST, request.FILES)
+        if form.is_valid():
+            res_data = form.cleaned_data['categories']
+            print(res_data)
+            # bill_list = HouseOfRepsBills.objects.filter(date__in=['03 Sep 2020', '13 May 2020', '29 May 2020'])
 
-# bills view
-def bills(request):
-    return render(request, 'trackgovApp/bills.html')
+            category_list = []
+            if 'agriculture' in res_data:
+                category_list.append('Agriculture')
+            elif 'business' in res_data:
+                category_list.append('Business')
+            elif 'civil_rights' in res_data:
+                category_list.append('Civil Rights')
+            elif 'drug_policy' in res_data:
+                category_list.append('Drug Policy')
+            elif 'economy' in res_data:
+                category_list.append('Economy')
+            elif 'education' in res_data:
+                category_list.append('Education')
+            elif 'environment' in res_data:
+                category_list.append('Environment')
+            elif 'food_water' in res_data:
+                category_list.append('Foreign and Water')
+            elif 'foreign_policy' in res_data:
+                category_list.append('Foreign Affairs and Trade')
+            elif 'guns' in res_data:
+                category_list.append('Guns')
+            elif 'healthcare' in res_data:
+                category_list.append('Healthcare')
+            elif 'immigration' in res_data:
+                category_list.append('Immigration')
+            elif 'jobs_wages' in res_data:
+                category_list.append('Jobs and Wages')
+            elif 'sports' in res_data:
+                category_list.append('Sports')
+            elif 'law_enforcement' in res_data:
+                category_list.append('Law enforcement')
+            elif 'transportation' in res_data:
+                category_list.append('Transportation')
+            elif 'millitary' in res_data:
+                category_list.append('Millitary')
+            elif 'public_office' in res_data:
+                category_list.append('Public Office')
+            elif 'religion' in res_data:
+                category_list.append('Religion')
+            elif 'social_programs' in res_data:
+                category_list.append('Social programs')
+            elif 'taxes' in res_data:
+                category_list.append('Taxes')
+            elif 'technology' in res_data:
+                category_list.append('Technology')
+            else:
+                pass
+
+            bill_list = HouseOfRepsBills.objects.filter(category__in=category_list)
+
+            # bill_list = HouseOfRepsBills.objects.all()
+            context = {
+                'bill_list': bill_list
+            }
+            return dashboard_bills_list(request, context)
+
+    form = CategoriesForm()
+    return render(request, 'trackgovApp/categories.html', {"form": form})
+
 
 
 # Dashboard bills list page view
-def dashboard_bills_list(request):
+def dashboard_bills_list(request, new_context={}):
     # context = { 
     #     'ourRange0': range(3),
     #     'ourRange1': range(9)
     #     }
-    bill_list = HouseOfRepsBills.objects.all()
+    # bill_list = HouseOfRepsBills.objects.all()
     context = {
         'ourRange0': range(3),
-        'bill_list': bill_list
+        # 'bill_list': bill_list
     }
+    context.update(new_context)
     return render(request, 'trackgovApp/bills-list.html', context=context)
+
+
+
+
+# # categories view
+# def categories(request):
+#     if request.method =='POST':
+#         # print("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!!")
+#         form =  CategoriesForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             print(form.cleaned_data)
+#             # bill_list = HouseOfRepsBills.object.filter(date__in=['27 Feb 2020'])
+#             bill_list = HouseOfRepsBills.objects.all()
+#             categories = {
+#                 'bill_list': bill_list
+#             }
+#             base_url = reverse('dashboard_bills_list')
+#             query_string = urlencode(categories)
+#             my_url = f'{base_url}?{query_string}'
+#             return redirect(my_url)
+
+#     form = CategoriesForm()
+#     return render(request, 'trackgovApp/categories.html', {"form": form})
+
+
+
+# # Dashboard bills list page view
+# def dashboard_bills_list(request):
+#     # context = { 
+#     #     'ourRange0': range(3),
+#     #     'ourRange1': range(9)
+#     #     }
+#     # bill_list = HouseOfRepsBills.objects.all()
+#     # context = {
+#     #     'ourRange0': range(3),
+#     #     # 'bill_list': bill_list
+#     # }
+#     # context.update(new_context)
+#     context = request.GET.get('categories')
+#     return render(request, 'trackgovApp/bills-list.html', context=context)
+#     # return render(request, 'trackgovApp/bills-list.html')
+
+
+
+
+
+
 
 
 # Dashboard bills detail page view
