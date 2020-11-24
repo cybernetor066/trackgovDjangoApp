@@ -1,6 +1,10 @@
 {% extends 'trackgovApp/base.html' %}
 {% block title %}Categories Section{% endblock title %}
 {% block content %}
+
+
+{% load static %}
+    <script type="text/javascript" src="{% static 'trackgovApp/js/select-all.js' %}"></script>
     {% comment %} {% block navMenu %}
 
     {% endblock navMenu %} {% endcomment %}
@@ -61,7 +65,6 @@
 
                 
                 <!-- End Sidebar -->
-
                 <div class="clearfix"></div>
 
             </div>
@@ -77,203 +80,248 @@
         <div class="content-page content-page-categories-custom">
             <div class="content">
                 <div class="container-fluid">
-
                     {% comment %} <p class="font-weight-bold ml-5">SELECT AT LEAST ONE TOPIC</p> {% endcomment %}
-                    <form action="" method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {% comment %} <div class="row w-50 ml-5">
-                            {{ form }}
-                        </div> {% endcomment %}
                         <div class="row w-50 ml-5">
                             <div class="col-sm">
-                            <p class="font-weight-bold">SELECT AT LEAST ONE TOPIC</p>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.agriculture.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check1" name="categories" value="agriculture">
-                                    <label class="custom-control-label" for="check1">Agriculture</label>
-                                </div>
-                                </li>
+                                <p class="font-weight-bold">SELECT AT LEAST ONE TOPIC</p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="check_all" name="categories">
+                                        <label class="custom-control-label" for="check_all">Select All</label>
+                                    </div>
+                                    </li>
+                                </ul>
+                                <form action="" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {% comment %} <div class="row w-50 ml-5">
+                                        {{ form }}
+                                    </div> {% endcomment %}
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.business.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check1" name="categories" value="business">
+                                            <label class="custom-control-label" for="check1">Business</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.business.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check2" name="categories" value="business">
-                                    <label class="custom-control-label" for="check2">Business</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.civil_rights.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check2" name="categories" value="civil_rights">
+                                            <label class="custom-control-label" for="check2">Civil Rights</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.civil_rights.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check3" name="categories" value="civil_rights">
-                                    <label class="custom-control-label" for="check3">Civil Rights</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.drug_policy.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check3" name="categories" value="drug_policy">
+                                            <label class="custom-control-label" for="check3">Drug policy</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.drug_policy.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check4" name="categories" value="drug_policy">
-                                    <label class="custom-control-label" for="check4">Drug policy</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.economy.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check4" name="categories" value="economy">
+                                            <label class="custom-control-label" for="check4">Economy</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.economy.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check5" name="categories" value="economy">
-                                    <label class="custom-control-label" for="check5">Economy</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.education.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check5" name="categories" value="education">
+                                            <label class="custom-control-label" for="check5">Education</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.education.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check6" name="categories" value="education">
-                                    <label class="custom-control-label" for="check6">Education</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.environment.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check6" name="categories" value="environment">
+                                            <label class="custom-control-label" for="check6">Environment</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.environment.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check7" name="categories" value="environment">
-                                    <label class="custom-control-label" for="check7">Environment</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.food_water.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check7" name="categories" value="food_water">
+                                            <label class="custom-control-label" for="check7">Food/Water</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.food_water.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check8" name="categories" value="food_water">
-                                    <label class="custom-control-label" for="check8">Food/Water</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.foreign_policy.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check8" name="categories" value="foreign_policy">
+                                            <label class="custom-control-label" for="check8">Foreign Policy</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.foreign_policy.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check9" name="categories" value="foreign_policy">
-                                    <label class="custom-control-label" for="check9">Foreign Policy</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.guns.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check9" name="categories" value="guns">
+                                            <label class="custom-control-label" for="check9">Guns</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.guns.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check10" name="categories" value="guns">
-                                    <label class="custom-control-label" for="check10">Guns</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.healthcare.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check10" name="categories" value="healthcare">
+                                            <label class="custom-control-label" for="check10">Healthcare</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.healthcare.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check11" name="categories" value="healthcare">
-                                    <label class="custom-control-label" for="check11">Healthcare</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.immigration.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check11" name="categories" value="immigration">
+                                            <label class="custom-control-label" for="check11">Immigration</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.immigration.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check12" name="categories" value="immigration">
-                                    <label class="custom-control-label" for="check12">Immigration</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.indigenous.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check12" name="categories" value="indigenous">
+                                            <label class="custom-control-label" for="check12">Indigenous</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.jobs_wages.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check13" name="categories" value="jobs_wages">
-                                    <label class="custom-control-label" for="check13">Jobs/Wages</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.jobs_wages.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check13" name="categories" value="jobs_wages">
+                                            <label class="custom-control-label" for="check13">Jobs/Wages</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.sports.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check14"  name="categories" value="sports">
-                                    <label class="custom-control-label" for="check14">Sports</label>
-                                </div>
-                                </li>
+                                        {% comment %} <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.context.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check14"  name="categories" value="context">
+                                            <label class="custom-control-label" for="check14">Context</label>
+                                        </div>
+                                        </li> {% endcomment %}
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.law_enforcement.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check15" name="categories" value="law_enforcement">
-                                    <label class="custom-control-label" for="check15">Law Enforcement</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.law_enforcement.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check15" name="categories" value="law_enforcement">
+                                            <label class="custom-control-label" for="check15">Law Enforcement</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.transportation.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check16" name="categories" value="transportation">
-                                    <label class="custom-control-label" for="check16">Transportation</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.lgbtq.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check16" name="categories" value="lgbtq">
+                                            <label class="custom-control-label" for="check16">LGBTQ+</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.millitary.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check17" name="categories" value="millitary">
-                                    <label class="custom-control-label" for="check17">Millitary</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.media_journalism.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check17" name="categories" value="media_journalism">
+                                            <label class="custom-control-label" for="check17">Media and journalism</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.public_office.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check18" name="categories" value="public_office">
-                                    <label class="custom-control-label" for="check18">Public Office</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.millitary.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check18" name="categories" value="millitary">
+                                            <label class="custom-control-label" for="check18">Millitary</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.religion.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check19" name="categories" value="religion">
-                                    <label class="custom-control-label" for="check19">Religion</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.public_office.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check19" name="categories" value="public_office">
+                                            <label class="custom-control-label" for="check19">Public Office</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.social_programs.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check20" name="categories" value="social_programs">
-                                    <label class="custom-control-label" for="check20">Social Programs</label>
-                                </div>
-                                </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.taxes.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check21" name="categories" value="taxes">
-                                    <label class="custom-control-label" for="check21">Taxes</label>
-                                </div>
-                                </li>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.privacy.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check20" name="categories" value="privacy">
+                                            <label class="custom-control-label" for="check20">Privacy</label>
+                                        </div>
+                                        </li>
 
-                                <li class="list-group-item">
-                                <div class="custom-control custom-checkbox">
-                                    {{ form.technology.errors }}
-                                    <input type="checkbox" class="custom-control-input" id="check22" name="categories" value="technology">
-                                    <label class="custom-control-label" for="check22">Technology</label>
-                                </div>
-                                </li>                                                  
-                            </ul>
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.religion.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check21" name="categories" value="religion">
+                                            <label class="custom-control-label" for="check21">Religion</label>
+                                        </div>
+                                        </li>
+
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.social_programs.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check22" name="categories" value="social_programs">
+                                            <label class="custom-control-label" for="check22">Social Programs</label>
+                                        </div>
+                                        </li>
+
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.taxes.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check23" name="categories" value="taxes">
+                                            <label class="custom-control-label" for="check23">Taxes</label>
+                                        </div>
+                                        </li>
+
+                                        <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            {{ form.technology.errors }}
+                                            <input type="checkbox" class="custom-control-input select-all-custom" id="check24" name="categories" value="technology">
+                                            <label class="custom-control-label" for="check24">Technology</label>
+                                        </div>
+                                            {% comment %} <span id="lat255"></span> <br />
+                                            <span id="lng266"></span> {% endcomment %}
+                                        </li>
+
+                                        <li class="list-group-item d-none">
+                                        <div class="">
+                                            {{ form.lat.errors }}
+                                            <input type="text" class="" id="lat25" name="lat">
+                                            <label class="" for="lat25">Latitude</label>
+                                        </div>
+                                        </li> 
+
+
+                                        <li class="list-group-item d-none">
+                                        <div class="">
+                                            {{ form.lng.errors }}
+                                            <input type="text" class="" id="lng26" name="lng">
+                                            <label class="" for="lng26">Longitude</label>
+                                        </div>
+                                        </li>                                                        
+                                    </ul>
+
+                                    <div class="mt-3 mb-5">
+                                        <input type="submit" value="Next" class="btn btn-success">
+                                        {% comment %} <a href="{%  url 'dashboardbillslist' %}" class="btn btn-success ml-2">Next<i class="mdi mdi-arrow-right ml-1"></i></a> {% endcomment %}
+                                    </div>
+                                    
+
+
+                                </form>
                             </div>
-
                         </div>
 
-                        <div class="mt-3 mb-5 ml-5">
-                            <input type="submit" value="Next" class="btn btn-success ml-2"><i class="mdi mdi-arrow-right ml-1"></i><i class="mdi mdi-arrow-right ml-1"></i>
-                            {% comment %} <a href="{%  url 'dashboardbillslist' %}" class="btn btn-success ml-2">Next<i class="mdi mdi-arrow-right ml-1"></i></a> {% endcomment %}
-                        </div>
-
-                    </form>
 
                 </div>                           
 
@@ -285,7 +333,32 @@
         <!-- ============================================================== -->
         <!-- End Page content -->
         <!-- ============================================================== -->
+        <div class="">
+            <div id=""></div>
+            <script type="application/javascript">
+                getLocation();
 
+                function getLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(SendUserCoordinates);
+                    } else {
+                        alert("Geolocation is not supported by this browser.");
+                    }
+
+                    function SendUserCoordinates(position) {
+                        // document.getElementById("lat255").innerHTML = position.coords.latitude;
+                        // document.getElementById("lng266").innerHTML = position.coords.longitude;
+                        // alert("Geolocation is not supported by this browser.");
+
+                        document.getElementById("lat25").value = '145.003791';
+                        document.getElementById("lng26").value = '-37.831785';
+
+                        // document.getElementById("lat25").value = position.coords.latitude;
+                        // document.getElementById("lng26").value = position.coords.longitude;
+                    }
+                }
+            </script>
+        </div>
 
     </div>
     <!-- END wrapper -->

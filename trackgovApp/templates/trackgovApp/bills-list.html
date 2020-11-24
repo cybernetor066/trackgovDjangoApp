@@ -4,7 +4,7 @@
 
     <!-- Begin page -->
     <div class="wrapper">
-        <!-- ========== Left Sidebar Start ========== -->
+        {% comment %} <!-- ========== Left Sidebar Start ========== -->
         <div class="left-side-menu">
 
             <div class="h-100" id="left-side-menu-container" data-simplebar>
@@ -64,7 +64,7 @@
             <!-- Sidebar -left -->
 
         </div>
-        <!-- Left Sidebar End -->
+        <!-- Left Sidebar End --> {% endcomment %}
 
         <!-- ============================================================== -->
         <!-- Start Page Content here -->
@@ -81,7 +81,70 @@
                         </div>
                     </div>     
                     <!-- end page title -->    {% endcomment %}
-                    
+
+
+                    <div class="row">
+                        <div class="col-sm-9 pl-0">
+                            <!-- Profile -->
+                            <div class="card bg-primary">
+                                <div class="card-body profile-user-box">
+
+                                    <div class="media">
+                                        <span class="float-left m-2 mr-4"><img src="{{ bio_object.profile_picture }}" style="height: 100px;" alt="" class="rounded-circle img-thumbnail"></span>
+                                        <div class="media-body">
+                                            
+                                            {% comment %} <span class="text-left mt-3"> {% endcomment %}
+                                            <div>
+                                                <ul class="social-list list-inline mb-1">
+                                                    <li class="list-inline-item">
+                                                        <h4 class="text-white">{{ bio_object.name }}</h4>
+                                                    </li>
+                                                    {% comment %} <br /> {% endcomment %}
+                                                    <li class="list-inline-item text-center">
+                                                        <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary">
+                                                            <i class="mdi mdi-facebook"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item text-center">
+                                                        <a href="javascript: void(0);" class="social-list-item border-danger text-danger">
+                                                            <i class="mdi mdi-google"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item text-center">
+                                                        <a href="javascript: void(0);" class="social-list-item border-info text-info">
+                                                            <i class="mdi mdi-twitter"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item text-center">
+                                                        <a href="javascript: void(0);" class="social-list-item border-danger text-danger">
+                                                            <i class="mdi mdi-pinterest"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item text-center">
+                                                        <a href="javascript: void(0);" class="social-list-item border-success text-success">
+                                                            <i class="mdi mdi-phone"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item text-center">
+                                                        <a href="javascript: void(0);" class="social-list-item border-warning text-warning">
+                                                            <i class="mdi mdi-email"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            {% comment %} </span> {% endcomment %}
+                                            <p class="font-13 text-white-50"> Electorate </p>
+                                            <br />
+                                            <p class="font-6 text-white btn btn-info btn-rounded"> Wiki </p>
+                                        </div> <!-- end media-body-->
+                                    </div>
+
+                                </div> <!-- end card-body/ profile-user-box-->
+                            </div><!--end profile/ card -->
+                        </div> <!-- end col-->
+
+                    </div>
+                    <!-- end row -->
                     
                     <div class="row">
                         <table class="table table-dark mb-0">

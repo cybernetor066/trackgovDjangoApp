@@ -1,16 +1,12 @@
 from django import forms
 from django.forms import ModelForm
-
 from .models import UserRegistration
-
 
 class UserRegistrationForm(ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput, max_length=100)
-
     class Meta:
         model = UserRegistration
-        fields = ['firstname', 'lastname', 'useremail', 'username', 'password', 'datereg']
-
+        fields = ['useremail', 'username', 'password', 'datereg']
 
 
 class UserLoginForm(forms.Form):
@@ -18,9 +14,7 @@ class UserLoginForm(forms.Form):
     password = forms.CharField(label='Password', widget=forms.PasswordInput, max_length=100)
     
 
-
 CATEGORIES_CHOICES = [
-    ('agriculture', 'Agriculture'),
     ('business', 'Business'),
     ('civil_rights', 'Civil Rights'),
     ('drug_policy', 'Drug Policy'),
@@ -32,12 +26,15 @@ CATEGORIES_CHOICES = [
     ('guns', 'Guns'),
     ('healthcare', 'Healthcare'),
     ('immigration', 'Immigration'),
+    ('indigenous', 'Indigenous'),
     ('jobs_wages', 'Jobs/Wages'),
-    ('sports', 'Sports'),
+    # ('context', 'Context'),
     ('law_enforcement', 'Law Enforcement'),
-    ('transportation', 'Transportation'),
+    ('lgbtq', 'LGBTQ+'),
+    ('media_journalism', 'Media And Journalism'),
     ('millitary', 'Millitary'),
     ('public_office', 'Public Office'),
+    ('privacy', 'Privacy'),
     ('religion', 'Religion'),
     ('social_programs', 'Social Programs'),
     ('taxes', 'Taxes'),
@@ -70,5 +67,7 @@ class CategoriesForm(forms.Form):
     # taxes = forms.CheckboxInput()
     # technology = forms.CheckboxInput()
     categories = forms.MultipleChoiceField(required=False, widget=forms.CheckboxSelectMultiple, choices=CATEGORIES_CHOICES)
+    lat = forms.CharField()
+    lng = forms.CharField()
 
 

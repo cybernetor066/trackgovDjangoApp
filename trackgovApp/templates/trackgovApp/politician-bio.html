@@ -1,5 +1,149 @@
 {% extends 'trackgovApp/base.html' %}
 {% block title %} Profile | Trackgov Dashboard {% endblock title %}
+
+{% block navMenu %}
+    <nav class="navbar navbar-expand-sm bg-navbar-custom navbar-dark sticky-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <!-- LOGO -->
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link navbar-brand">
+                        <span class="logo-lg">
+                            <img src="../../static/trackgovApp/assets/images/logo99.png" alt="" class="logo-dark myLogo mb-1" height="19">
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item active mr-3">
+                    <a class="nav-link" href="{%  url 'home' %}">Home</a>
+                </li>
+
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="{%  url 'faq' %}">Faq</a>
+                </li>
+                <li>
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control dropdown-toggle" placeholder="Search..." id="top-search">
+                            {% comment %} <span class="mdi mdi-magnify search-icon"></span> {% endcomment %}
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto navbar-right">
+                <li class="dropdown">
+                    <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <i class="dripicons-bell noti-icon"></i>
+                        <span class="noti-icon-badge"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
+
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h5 class="m-0">
+                                <span class="float-right">
+                                    <a href="javascript: void(0);" class="text-dark">
+                                        <small>Clear All</small>
+                                    </a>
+                                </span>Notification
+                            </h5>
+                        </div>
+
+                        <div style="max-height: 230px;" data-simplebar>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-primary">
+                                    <i class="mdi mdi-comment-account-outline"></i>
+                                </div>
+                                <p class="notify-details">Caleb Flakelar commented on Admin
+                                    <small class="text-muted">1 min ago</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-info">
+                                    <i class="mdi mdi-account-plus"></i>
+                                </div>
+                                <p class="notify-details">New user registered.
+                                    <small class="text-muted">5 hours ago</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon">
+                                    <img src="assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                                <p class="notify-details">Cristina Pride</p>
+                                <p class="text-muted mb-0 user-msg">
+                                    <small>Hi, How are you? What about our next meeting</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-primary">
+                                    <i class="mdi mdi-comment-account-outline"></i>
+                                </div>
+                                <p class="notify-details">Caleb Flakelar commented on Admin
+                                    <small class="text-muted">4 days ago</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon">
+                                    <img src="assets/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                                <p class="notify-details">Karen Robinson</p>
+                                <p class="text-muted mb-0 user-msg">
+                                    <small>Wow ! this admin looks good and awesome design</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-info">
+                                    <i class="mdi mdi-heart"></i>
+                                </div>
+                                <p class="notify-details">Carlos Crouch liked
+                                    <b>Admin</b>
+                                    <small class="text-muted">13 days ago</small>
+                                </p>
+                            </a>
+                        </div>
+
+                        <!-- All-->
+                        <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                            View All
+                        </a>
+
+                    </div>
+                </li>
+
+                <li>
+                    <a class="nav-link right-bar-toggle" href="javascript: void(0);">
+                        <span class="dripicons-gear noti-icon"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{%  url 'login' %}" class="nav-link">Login<i class=""></i></a>
+                </li>
+                <li>
+                    <a href="{%  url 'signup' %}" class="nav-link">Signup<i class="fa fa-telegram fa-lg"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endblock navMenu %}
+
+
 {% block content %}
 
     <!-- Begin page -->
@@ -36,7 +180,7 @@
                     </ul>
                 </li>
 
-                <li class="side-nav-title side-nav-item">Apps</li>
+                {% comment %} <li class="side-nav-title side-nav-item">Apps</li> {% endcomment %}
 
                 <li class="side-nav-item">
                     <a href="apps-calendar.html" class="side-nav-link">
@@ -94,22 +238,53 @@
                                 <div class="row">
                                     <div class="col-sm-8">
                                         <div class="media">
-                                            <span class="float-left m-2 mr-4"><img src="../../static/trackgovApp/assets/images/users/avatar-2.jpg" style="height: 100px;" alt="" class="rounded-circle img-thumbnail"></span>
+                                            <span class="float-left m-2 mr-4"><img src="{{ bio_object.profile_picture }}" style="height: 100px;" alt="" class="rounded-circle img-thumbnail"></span>
                                             <div class="media-body">
 
-                                                <h4 class="mt-1 mb-1 text-white">Michael Franklin</h4>
-                                                <p class="font-13 text-white-50"> Authorised Brand Seller</p>
-
-                                                <ul class="mb-0 list-inline text-light">
-                                                    <li class="list-inline-item mr-3">
-                                                        <h5 class="mb-1">$ 25,184</h5>
-                                                        <p class="mb-0 font-13 text-white-50">Total Revenue</p>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <h5 class="mb-1">5482</h5>
-                                                        <p class="mb-0 font-13 text-white-50">Number of Orders</p>
-                                                    </li>
-                                                </ul>
+                                                
+                                                {% comment %} <span class="text-left mt-3"> {% endcomment %}
+                                                <div>
+                                                    <ul class="social-list list-inline mb-1">
+                                                        <li class="list-inline-item">
+                                                            <h4 class="text-white">{{ bio_object.name }}</h4>
+                                                        </li>
+                                                        {% comment %} <br /> {% endcomment %}
+                                                        <li class="list-inline-item text-center">
+                                                            <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary">
+                                                                <i class="mdi mdi-facebook"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="list-inline-item text-center">
+                                                            <a href="javascript: void(0);" class="social-list-item border-danger text-danger">
+                                                                <i class="mdi mdi-google"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="list-inline-item text-center">
+                                                            <a href="javascript: void(0);" class="social-list-item border-info text-info">
+                                                                <i class="mdi mdi-twitter"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="list-inline-item text-center">
+                                                            <a href="javascript: void(0);" class="social-list-item border-danger text-danger">
+                                                                <i class="mdi mdi-pinterest"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="list-inline-item text-center">
+                                                            <a href="javascript: void(0);" class="social-list-item border-success text-success">
+                                                                <i class="mdi mdi-phone"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="list-inline-item text-center">
+                                                            <a href="javascript: void(0);" class="social-list-item border-warning text-warning">
+                                                                <i class="mdi mdi-email"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                {% comment %} </span> {% endcomment %}
+                                                <p class="font-13 text-white-50"> Electorate </p>
+                                                <br />
+                                                <p class="font-6 text-white btn btn-info btn-rounded"> Wiki </p>
                                             </div> <!-- end media-body-->
                                         </div>
                                     </div> <!-- end col-->
@@ -123,101 +298,18 @@
 
 
                 <div class="row">
-                    <div class="col-lg-4">
-                        <!-- Personal-Information -->
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="header-title mt-0 mb-3">Representative's Info</h4>
-                                <p class="text-muted font-13">
-                                    Hye, I’m Michael Franklin residing in this beautiful world. I create websites and mobile apps with great UX and UI design. I have done work with big companies like Nokia, Google and Yahoo. Meet me or Contact me for any queries. One Extra line for filling space. Fill as many you want.
-                                </p>
-
-                                <hr/>
-
-                                <div class="text-left">
-                                    <p class="text-muted"><strong>Full Name :</strong> <span class="ml-2">Michael A. Franklin</span></p>
-
-                                    <p class="text-muted"><strong>Mobile :</strong><span class="ml-2">(+12) 123 1234 567</span></p>
-
-                                    <p class="text-muted"><strong>Email :</strong> <span class="ml-2">coderthemes@gmail.com</span></p>
-
-                                    <p class="text-muted"><strong>Location :</strong> <span class="ml-2">USA</span></p>
-
-                                    <p class="text-muted"><strong>Languages :</strong>
-                                        <span class="ml-2"> English, German, Spanish </span>
-                                    </p>
-                                    <p class="text-muted mb-0"><strong>Elsewhere :</strong>
-                                        <a class="d-inline-block ml-2 text-muted" title="" data-placement="top" data-toggle="tooltip" href="" data-original-title="Facebook"><i class="mdi mdi-facebook"></i></a>
-                                        <a class="d-inline-block ml-2 text-muted" title="" data-placement="top" data-toggle="tooltip" href="" data-original-title="Twitter"><i class="mdi mdi-twitter"></i></a>
-                                        <a class="d-inline-block ml-2 text-muted" title="" data-placement="top" data-toggle="tooltip" href="" data-original-title="Skype"><i class="mdi mdi-skype"></i></a>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Personal-Information -->
-
-                        <!-- Toll free number box-->
-                        <div class="card text-white bg-info overflow-hidden">
-                            <div class="card-body">
-                                <div class="toll-free-box text-center">
-                                    <h4> <i class="mdi mdi-deskphone"></i> Toll Free : 1-234-567-8901</h4>
-                                </div>
-                            </div> <!-- end card-body-->
-                        </div> <!-- end card-->
-                        <!-- End Toll free number box-->
-
-                    </div> <!-- end col-->
-
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
 
                         <!-- Chart-->
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title mb-3">Orders & Revenue</h4>
+                                <h4 class="header-title mb-3">Comments</h4>
                                 <div style="height: 260px;" class="chartjs-chart">
                                     <canvas id="high-performing-product"></canvas>
                                 </div>        
                             </div>
                         </div>
                         <!-- End Chart-->
-
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="card tilebox-one">
-                                    <div class="card-body">
-                                        <i class="dripicons-basket float-right text-muted"></i>
-                                        <h6 class="text-muted text-uppercase mt-0">Orders</h6>
-                                        <h2 class="m-b-20">1,587</h2>
-                                        <span class="badge badge-primary"> +11% </span> <span class="text-muted">From previous period</span>
-                                    </div> <!-- end card-body-->
-                                </div> <!--end card-->
-                            </div><!-- end col -->
-
-                            <div class="col-sm-4">
-                                <div class="card tilebox-one">
-                                    <div class="card-body">
-                                        <i class="dripicons-box float-right text-muted"></i>
-                                        <h6 class="text-muted text-uppercase mt-0">Revenue</h6>
-                                        <h2 class="m-b-20">$<span>46,782</span></h2>
-                                        <span class="badge badge-danger"> -29% </span> <span class="text-muted">From previous period</span>
-                                    </div> <!-- end card-body-->
-                                </div> <!--end card-->
-                            </div><!-- end col -->
-
-                            <div class="col-sm-4">
-                                <div class="card tilebox-one">
-                                    <div class="card-body">
-                                        <i class="dripicons-jewel float-right text-muted"></i>
-                                        <h6 class="text-muted text-uppercase mt-0">Product Sold</h6>
-                                        <h2 class="m-b-20">1,890</h2>
-                                        <span class="badge badge-primary"> +89% </span> <span class="text-muted">Last year</span>
-                                    </div> <!-- end card-body-->
-                                </div> <!--end card-->
-                            </div><!-- end col -->
-
-                        </div>
-                        <!-- end row -->
 
                     </div>
                     <!-- end col -->
