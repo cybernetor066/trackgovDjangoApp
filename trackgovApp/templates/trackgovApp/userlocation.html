@@ -31,3 +31,363 @@
 
 {% endblock content %}
 
+
+
+
+
+% block content %}
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left-side-menu">
+
+            <div class="h-100" id="left-side-menu-container" data-simplebar>
+
+                <!--- Sidemenu -->
+                <ul class="metismenu side-nav">
+
+                    <li class="side-nav-title side-nav-item">Navigation</li>
+
+                    <li class="side-nav-item">
+                        <a href="javascript: void(0);" class="side-nav-link">
+                            <i class="uil-home-alt"></i>
+                            <span class="badge badge-success float-right">4</span>
+                            <span> Dashboards </span>
+                        </a>
+                        <ul class="side-nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="dashboard-analytics.html">Analytics</a>
+                            </li>
+                            <li>
+                                <a href="dashboard-crm.html">CRM</a>
+                            </li>
+                            <li>
+                                <a href="index.html">Ecommerce</a>
+                            </li>
+                            <li>
+                                <a href="dashboard-projects.html">Projects</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="side-nav-title side-nav-item">Apps</li>
+
+                    <li class="side-nav-item">
+                        <a href="apps-calendar.html" class="side-nav-link">
+                            <i class="uil-calender"></i>
+                            <span> Calendar </span>
+                        </a>
+                    </li>
+
+                    <li class="side-nav-item">
+                        <a href="apps-chat.html" class="side-nav-link">
+                            <i class="uil-comments-alt"></i>
+                            <span> Chat </span>
+                        </a>
+                    </li>
+
+        
+                </ul>
+
+                
+                <!-- End Sidebar -->
+
+                <div class="clearfix"></div>
+
+            </div>
+            <!-- Sidebar -left -->
+
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page content-page-custom">
+            <div class="content">
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+                    
+                    <!-- start page title -->
+                    <div class="row mt-1">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <h4 class="page-title">{{ bill.title_of_bill }}</h4>
+                            </div>
+                        </div>
+                    </div>     
+                    <!-- end page title --> 
+
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7 col-md-10 col-sm-11">
+    
+                            <div class="horizontal-steps mt-4 mb-4 pb-5">
+                                {% if bill.status == 'Before House of Representatives' %}
+                                    <div class="horizontal-steps-content">
+                                        <div class="step-item current">
+                                            <span>Intro House</span>
+                                        </div>
+                                        <div class="step-item">
+                                            <span>Passed House</span>
+                                        </div>
+                                        <div class="step-item">
+                                            <span>Intro Senate</span>
+                                        </div>
+                                        <div class="step-item">
+                                            <span>Passed Senate</span>
+                                        </div>
+                                    </div>
+                                    <div class="process-line" style="width: 0%;"></div>
+                                {% else %}
+                                    <div class="horizontal-steps-content">
+                                        <div class="step-item">
+                                            <span>Intro House</span>
+                                        </div>
+                                        <div class="step-item current">
+                                            <span>Passed House</span>
+                                        </div>
+                                        <div class="step-item">
+                                            <span>Intro Senate</span>
+                                        </div>
+                                        <div class="step-item">
+                                            <span>Passed Senate</span>
+                                        </div>
+                                    </div>
+                                    <div class="process-line" style="width: 33%;"></div>
+                                {% endif %}
+    
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row -->    
+                    
+                    
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title mb-3">PROGRESS</h4>
+        
+                                    <div class="table-responsive">
+                                        <table class="table mb-0">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th>House of Representatives</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>Introduced and read a first time</td>
+                                                <td>27 Feb 2020</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Second reading moved</td>
+                                                <td>27 Feb 2020</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Second reading debate</td>
+                                                <td>05 Mar 2020</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Second reading debate</td>
+                                                <td>27 Oct 2020</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ bill.stage_of_bill }}</td>
+                                                <td>27 Oct 2020</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end table-responsive -->
+        
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+    
+
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title mb-3">Bill Information</h4>
+    
+                                    <div>
+                                        <dl class="">
+                                            <dt>Date</dt>
+                                            <dd>
+                                                {{ bill.date }} &nbsp;
+                                            </dd>
+                                            <dt>Chamber</dt>
+                                            <dd>
+                                                {{ bill.chamber }} &nbsp;
+                                            </dd>
+                                            <dt>Status</dt>
+                                            <dd>
+                                                {{ bill.status }} &nbsp;
+                                            </dd>
+                                            <dt>
+                                                Sponsor
+                                            </dt>
+                                            <dd>
+                                                {{ bill.sponsor }} &nbsp;
+                                            </dd>
+
+                                            <dt>Summary</dt>
+                                            <dd>
+                                               {{ bill.summary }} &nbsp;
+                                            </dd>
+                                        </dl>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+
+
+                        <div class="col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <div class="card text-center">
+                                            <div class="card-body">
+                                                <img src="{{ bio_object.profile_picture }}" class="rounded-circle avatar-lg img-thumbnail"
+                                                alt="profile-image">
+
+                                                {% comment %} <span class="link-to-politicianbio-custom">
+                                                    <a href="{% url 'politicianbio' %}"><h4 class="mb-0 mt-2">{{ rep_vote.politician_name }}</h4></a>
+                                                </span> 
+                                             {% endcomment %}
+                                                <span class="bills-list-title-custom">
+                                                    <a id="" href="{% url 'politicianbio' bio_object.name %}">
+                                                        <h4 class="mb-0 mt-2">{{ rep_vote.politician_name }}</h4>
+                                                    </a>
+                                                </span>
+
+                                                <p class="text-muted font-14">Electorate</p>
+
+                                                <div class="text-left mt-3">
+                                                    <p class="text-muted mb-2 font-13"><strong>First Reading Agreed :</strong> <span class="ml-2">Yes</span></p>
+
+                                                    <p class="text-muted mb-2 font-13"><strong>Second Reading Agreed :</strong><span class="ml-2">No</span></p>
+
+                                                    <p class="text-muted mb-2 font-13"><strong>Third Reading Agreed :</strong> <span class="ml-2 ">Yes</span></p>
+                                                </div>
+
+                                                <ul class="social-list list-inline mt-3 mb-0">
+                                                    <li class="list-inline-item">
+                                                        <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i
+                                                                class="mdi mdi-facebook"></i></a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i
+                                                                class="mdi mdi-google"></i></a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a href="javascript: void(0);" class="social-list-item border-info text-info"><i
+                                                                class="mdi mdi-twitter"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div> <!-- end card-body -->
+                                        </div> <!-- end card -->
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="row">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title mb-3">PROPOSED AMENDMENTS</h4>
+
+                                        <div class="table-responsive">
+                                            <table class="table mb-0">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    {% comment %} <th></th>
+                                                    <th></th> {% endcomment %}
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>Government [sheet RW122]</td>
+                                                    <td>
+                                                        <a
+                                                            id="main_0_content_0_lvResults_hlBill_0"
+                                                            aria-label="Bill link - ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]"
+                                                            rel="noopener noreferrer"
+                                                            href=""
+                                                            target=""
+                                                            >
+                                                            <button class="btn btn-rounded btn-info font-11">READ</button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>KING, Catherine, MP</td>
+                                                    <td>
+                                                        <a
+                                                            id="main_0_content_0_lvResults_hlBill_0"
+                                                            aria-label="Bill link - ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]"
+                                                            rel="noopener noreferrer"
+                                                            href=""
+                                                            target=""
+                                                            >
+                                                            <button class="btn btn-rounded btn-info font-11">READ</button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- end table-responsive -->
+                                    </div>
+                                </div>
+                            </div> <!-- end row -->
+                        </div> <!-- end col -->
+
+
+                    </div>
+                    <!-- end row -->
+    
+    
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title mb-3">COMMENTS</h4>
+        
+                                    <div class="table-responsive">
+                                        {% comment %} Placeholder {% endcomment %}
+                                    </div>
+                                    <!-- end table-responsive -->
+        
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+
+                    </div>
+                    <!-- end row -->
+                            
+                </div> <!-- container -->
+
+            </div> <!-- content -->
+
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+
+    </div>
+    <!-- END wrapper -->
+
+
+{% endblock content %}
+

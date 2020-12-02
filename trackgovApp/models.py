@@ -1,9 +1,8 @@
 from django.db import models
 from django.urls import reverse
+
 # Create your models here.
 class UserRegistration(models.Model):
-    # firstname = models.CharField(db_column='FIRSTNAME', max_length=200)
-    # lastname = models.CharField(db_column='LASTNAME', max_length=200)
     useremail = models.EmailField(unique=True, db_column='USEREMAIL', max_length=200)
     username = models.CharField(primary_key=True, db_column='USERNAME', max_length=200)
     password = models.CharField(db_column='PASSWORD', max_length=200)
@@ -30,11 +29,6 @@ class HouseOfRepsBills(models.Model):
         # managed = False
         db_table = 'hrepsbills'
 
-
-
-
-
-
 class HrepsPoliticiansInfo(models.Model):
     name = models.TextField(db_column='name', blank=True, null=True)  # Field name made lowercase.
     elec_div = models.TextField(db_column='elec_div', blank=True, null=True)  # Field name made lowercase. Field renamed because it was a Python reserved word.
@@ -51,6 +45,19 @@ class HrepsPoliticiansInfo(models.Model):
         db_table = 'hrepsMembers'
 
 
+class HrepsVotePatterns(models.Model):
+    title = models.TextField(db_column='title', blank=True, null=True)  # Field name made lowercase.
+    div_no = models.TextField(db_column='div_no', blank=True, null=True)  # Field name made lowercase. Field renamed because it was a Python reserved word.
+    question = models.TextField(db_column='question', blank=True, null=True)  # Field name made lowercase.
+    date = models.TextField(db_column='date', blank=True, null=True)  # Field name made lowercase.
+    outcome = models.TextField(db_column='outcome', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    politician_name = models.TextField(db_column='politician_name', blank=True, null=True)  # Field name made lowercase.
+    party = models.TextField(db_column='party', blank=True, null=True)  # Field name made lowercase.
+    ayes_vote = models.TextField(db_column='ayes_vote', blank=True, null=True)  # Field name made lowercase.
+    noes_vote = models.TextField(db_column='noes_vote', blank=True, null=True)  # Field name made lowercase.
+    class Meta:
+        # managed = False
+        db_table = 'hrepsVotePatterns'
 
 
 
@@ -64,52 +71,3 @@ class HrepsPoliticiansInfo(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# class Author(models.Model):
-#     name = models.CharField(max_length=100)
-#     title = models.CharField(max_length=3, choices=TITLE_CHOICES)
-#     birth_date = models.DateField(blank=True, null=True)
-
-#     def __str__(self):
-#         return self.name
-
-# class Book(models.Model):
-#     name = models.CharField(max_length=100)
-#     authors = models.ManyToManyField(Author)
-
-# class AuthorForm(ModelForm):
-#     class Meta:
-#         model = Author
-#         fields = ['name', 'title', 'birth_date']
-
-# class BookForm(ModelForm):
-#     class Meta:
-#         model = Book
-#         fields = ['name', 'authors']

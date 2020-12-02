@@ -1,25 +1,49 @@
 {% extends 'trackgovApp/base.html' %}
 {% block title %} Track Gov Index Page {% endblock title %}
-{% block content %}
-    
-    {% comment %} <div class="row justify-content-center align-self-center">
-        <h3 class="mb-5 mt-5">Politics in the palm of your hand</h3>
-    </div>
+{% load static %}
+{% block navMenu %}
+    <nav class="navbar navbar-expand-sm bg-navbar-custom navbar-dark sticky-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-            Stay current with life political information. Read bills, follow politicians and track
-            topics that are important to you.
-            </p>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <!-- LOGO -->
+                <li class="nav-item mr-5 mt-1">
+                    <a href="index.html" class="nav-link navbar-brand">
+                        <span class="logo-lg">
+                            <a class="" href="{%  url 'home' %}"><img src="{% static 'trackgovApp/assets/images/logo99.png' %}" alt="" class="logo-dark myLogo" height="19"></a>
+                        </span>
+                    </a>
+                </li>
+
+                <li>
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control dropdown-toggle" placeholder="Search..." id="top-search">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto navbar-right">
+                <li>
+                    <a href="{%  url 'login' %}" class="nav-link">Login<i class=""></i></a>
+                </li>
+
+                <li>
+                    <a href="{%  url 'signup' %}" class="nav-link">Signup<i class="fa fa-telegram fa-lg"></i></a>
+                </li>
+            </ul>
         </div>
-    </div>
-    <div class="row justify-content-center align-self-center">
-        <a href="{%  url 'categories' %}" class="btn btn-success mt-5 ml-5 ">Next</a>
-    </div> {% endcomment %}
+    </nav>
+{% endblock navMenu %}
 
-
+{% block content %}
     <!-- START HERO -->
     <section class="hero-section">
         <div class="container">
@@ -28,21 +52,27 @@
                     <div class="mt-md-4">
                         <div>
                             <span class="badge badge-danger badge-pill">Alpha 1.0 </span>
-                            {% comment %} <span class="text-white-50 ml-1">Welcome to the alpha version of this website</span> {% endcomment %}
                         </div>
                         <h2 class="text-white font-weight-normal mb-1 mt-3 hero-title">
                             Track your government
                         </h2>
 
                         <p class="mb-4 font-16 text-white-50">Stay informed with live data from your government. Track bills, join others in getting your voice heard and make your democracy work for you</p>
-                        <a href="{%  url 'categories' %}" class="btn btn-success">Let me in!</a>
-                        {% comment %} <i class="mdi mdi-arrow-right ml-1"></i> {% endcomment %}
+                        <a href="{%  url 'categories' %}" class="btn btn-success mb-1">Let me in!</a>
+
+                        {% comment %} <div class="alert alert-primary bg-white" role="alert">
+                            <strong>Please allow access to your location - </strong> We use it to find your representatives
+                        </div> {% endcomment %}
+
+                        <div class="alert alert-warning bg-white" role="alert">
+                            <i class="dripicons-warning mr-2"></i>Please <strong>allow </strong>  access to your location - We use it to find your representatives
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-md-5 offset-md-2">
                     <div class="text-md-right mt-3 mt-md-0">
-                        <img src="../../static/trackgovApp/assets/images/startup.svg" alt="" class="img-fluid" />
-                        {% comment %} <img src="trackgovApp/assets/images/startup.svg" alt="" class="img-fluid" /> {% endcomment %}
+                        <img src="{% static 'trackgovApp/assets/images/startup.svg' %}" alt="" class="img-fluid" />
                     </div>
                 </div>
             </div>
@@ -60,48 +90,43 @@
                     <div class="text-center">
                         <h1 class="mt-0"><i class="mdi mdi-heart-multiple-outline"></i></h1>
                         <h3>Features you'll <span class="text-danger">love</span></h3>
-                        <p class="text-muted mt-2">Trackgov comes with alot of benefits
+                        <p class="text-muted mt-2">Trackgov provides an interface between governments and their citizens
                         </p>
                     </div>
                 </div>
             </div>
             <div class="row mt-2 py-5 align-items-center">
                 <div class="col-lg-5">
-                    <img src="../../static/trackgovApp/assets/images/features-1.svg" class="img-fluid" alt="">
+                    <img src="{% static 'trackgovApp/assets/images/features-1.svg' %}" class="img-fluid" alt="">
                 </div>
                 <div class="col-lg-6 offset-lg-1">
-                    <h3 class="font-weight-normal">Track bills</h3>
-                    <p class="text-muted mt-3">Hyper comes with a variety of ready-to-use applications and pages that help to speed up the development</p>
+                    <h3 class="font-weight-normal">Automatic bill tracking</h3>
+                    <p class="text-muted mt-3">Trackgov scrapes data daily from your government providing you with all the information you need:</p>
 
                     <div class="mt-4">
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Track new bills</p>
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Track current bills progress</p>
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Track your geographical representatives based on your location</p>
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Login, signup, recover password</p>
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Find bills relating to topics you care about </p>
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> Get notified when a bill progresses </p>
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> See when the bill readings are taking place </p>
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-primary"></i> See how your representatives voted and contact them with 1 click through any medium </p>
                     </div>
-
-                    {% comment %} <a href="" class="btn btn-primary btn-rounded mt-3">Read More <i class="mdi mdi-arrow-right ml-1"></i></a> {% endcomment %}
-
                 </div>
             </div>
 
             <div class="row pb-3 pt-5 align-items-center">
                 <div class="col-lg-6">
-                    <h3 class="font-weight-normal">Ability to discuss bills </h3>
-                    <p class="text-muted mt-3">The simplest and fastest way to build dashboard or admin panel. Hyper is built using the latest tech and tools and provide an easy way to customize anything, including an overall color schemes, layout, etc.</p>
+                    <h3 class="font-weight-normal"> The place to share and be heard </h3>
+                    <p class="text-muted mt-3"> By becoming a member, you become part of a global community of trackgov users with a vision for a more hopeful world </p>
 
                     <div class="mt-4">
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Built with latest Bootstrap</p>
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Extensive use of SCSS variables</p>
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Well documented and structured code</p>
-                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Detailed Documentation</p>
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Read, vote and reply on other comments </p>
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Connect with other users </p>
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Focus the debate on the work of the government </p>
+                        <p class="text-muted"><i class="mdi mdi-circle-medium text-success"></i> Uncover the facts together, hold the powerful to account and share your ideas and arguments </p>
                     </div>
-
-                    <a href="" class="btn btn-success btn-rounded mt-3">Read More <i class="mdi mdi-arrow-right ml-1"></i></a>
 
                 </div>
                 <div class="col-lg-5 offset-lg-1">
-                    <img src="../../static/trackgovApp/assets/images/features-2.svg" class="img-fluid" alt="">
+                    <img src="{% static 'trackgovApp/assets/images/features-2.svg' %}" class="img-fluid" alt="">
                 </div>
             </div>
 
@@ -119,10 +144,6 @@
                     <div class="text-center">
                         <h1 class="mt-0"><i class="mdi mdi-frequently-asked-questions"></i></h1>
                         <h3>Frequently Asked <span class="text-primary">Questions</span></h3>
-                        <p class="text-muted mt-2">Here are some of the basic types of questions for our customers. For more 
-                            <br>information please contact us.</p>
-
-                        <button type="button" class="btn btn-success btn-sm mt-2"><i class="mdi mdi-email-outline mr-1"></i> Email us your question</button>
                         <button type="button" class="btn btn-info btn-sm mt-2 ml-1"><i class="mdi mdi-twitter mr-1"></i> Send us a tweet</button>
                     </div>
                 </div>
@@ -133,17 +154,16 @@
                     <!-- Question/Answer -->
                     <div>
                         <div class="faq-question-q-box">Q.</div>
-                        <h4 class="faq-question text-body">Can I use this template for my client?</h4>
-                        <p class="faq-answer mb-4 pb-1 text-muted">Yup, the marketplace license allows you to use this theme
-                            in any end products.
-                            For more information on licenses, please refere <a href="https://themes.getbootstrap.com/licenses/" target="_blank">here</a>.</p>
+                        <h4 class="faq-question text-body">How do you collect the data?</h4>
+                        <p class="faq-answer mb-4 pb-1 text-muted">
+                        Data is scrapped from online sources provided b your government
                     </div>
 
                     <!-- Question/Answer -->
                     <div>
                         <div class="faq-question-q-box">Q.</div>
-                        <h4 class="faq-question text-body">How do I get help with the theme?</h4>
-                        <p class="faq-answer mb-4 pb-1 text-muted">Use our dedicated support email (support@coderthemes.com) to send your issues or feedback. We are here to help anytime.</p>
+                        <h4 class="faq-question text-body">What is included in the membership?</h4>
+                        <p class="faq-answer mb-4 pb-1 text-muted"> Membership includes the ability to create and read comments and connect with other users </p>
                     </div>
 
                 </div>
@@ -153,18 +173,17 @@
                     <!-- Question/Answer -->
                     <div>
                         <div class="faq-question-q-box">Q.</div>
-                        <h4 class="faq-question text-body">Can this theme work with Wordpress?</h4>
-                        <p class="faq-answer mb-4 pb-1 text-muted">No. This is a HTML template. It won't directly with
-                            wordpress, though you can convert this into wordpress compatible theme.</p>
+                        <h4 class="faq-question text-body">Will it be free always?</h4>
+                        <p class="faq-answer mb-4 pb-1 text-muted"> Yes, government tracking will always be free and available to everyone. Membership will cost $2/month (first 100 users get free lifetime membership). </p>
                     </div>
 
-                    <!-- Question/Answer -->
+                    {% comment %} <!-- Question/Answer -->
                     <div>
                         <div class="faq-question-q-box">Q.</div>
                         <h4 class="faq-question text-body">Will you regularly give updates of Hyper?</h4>
                         <p class="faq-answer mb-4 pb-1 text-muted">Yes, We will update the Hyper regularly. All the
                             future updates would be available without any cost.</p>
-                    </div>
+                    </div> {% endcomment %}
 
                 </div>
                 <!--/col-lg-5-->
@@ -183,21 +202,31 @@
                 <div class="col-lg-12">
                     <div class="text-center">
                         <h3>Get In <span class="text-primary">Touch</span></h3>
-                        <p class="text-muted mt-2">Please fill out the following form and we will get back to you shortly. For more 
-                            <br>information please contact us.</p>
                     </div>
                 </div>
             </div>
 
             <div class="row align-items-center mt-3">
-                <div class="col-md-4">
-                    <p class="text-muted"><span class="font-weight-bold">Customer Support:</span><br> <span class="d-block mt-1">+1 234 56 7894</span></p>
-                    <p class="text-muted mt-4"><span class="font-weight-bold">Email Address:</span><br> <span class="d-block mt-1">info@gmail.com</span></p>
-                    <p class="text-muted mt-4"><span class="font-weight-bold">Office Address:</span><br> <span class="d-block mt-1">4461 Cedar Street Moro, AR 72368</span></p>
-                    <p class="text-muted mt-4"><span class="font-weight-bold">Office Time:</span><br> <span class="d-block mt-1">9:00AM To 6:00PM</span></p>
+                <div class="col-lg-4">
+                    <p class="text-muted mt-3"><span class="font-weight-bold">Customer Support:</span><br> <span class="d-block mt-1">+61 419 099 069</span></p>
+                    <p class="text-muted mt-3"><span class="font-weight-bold">Email Address:</span><br> <span class="d-block mt-1">contact@trackgov.com</span></p>
+                    {% comment %} <p class="text-muted mt-4"><span class="font-weight-bold">Office Address:</span><br> <span class="d-block mt-1">4461 Cedar Street Moro, AR 72368</span></p>
+                    <p class="text-muted mt-4"><span class="font-weight-bold">Office Time:</span><br> <span class="d-block mt-1">9:00AM To 6:00PM</span></p> {% endcomment %}
                 </div>
 
-                <div class="col-md-8">
+                <div class="col-lg-4">
+                    {% comment %} <p class="text-muted"><span class="font-weight-bold">Customer Support:</span><br> <span class="d-block mt-1">+1 234 56 7894</span></p>
+                    <p class="text-muted mt-4"><span class="font-weight-bold">Email Address:</span><br> <span class="d-block mt-1">info@gmail.com</span></p> {% endcomment %}
+                    <p class="text-muted mt-3"><span class="font-weight-bold">Office Address:</span><br> <span class="d-block mt-1">3 Turner St, Chelmer QLD 4068 AUSTRALIA</span></p>
+                    <p class="text-muted mt-3"><span class="font-weight-bold">Office Time:</span><br> <span class="d-block mt-1">9:00AM To 6:00PM</span></p>
+                </div>
+
+                <div class="col-lg-4">
+                    <p class="text-muted mt-3"><span class="font-weight-bold">Twitter:</span><br> <span class="d-block mt-1">@KaranGanesh</span></p>
+                    <p class="text-muted mt-3"><span class="font-weight-bold">Linkedin:</span><br> <span class="d-block mt-1">@KaranGanesh</span></p>
+                </div>
+
+                {% comment %} <div class="col-md-8">
                     <form>
                         <div class="row mt-4">
                             <div class="col-lg-6">
@@ -239,7 +268,7 @@
                             </div>
                         </div>
                     </form>
-                </div>
+                </div> {% endcomment %}
             </div>
         </div>
     </section>
@@ -251,29 +280,27 @@
 
 {% block footer %}
     <!-- START FOOTER -->
-    {% comment %} <footer class="bg-dark py-5"> {% endcomment %}
-    <footer class="py-5">
+    <footer class="footer-alt mt-5 mb-1">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    {% comment %} <img src="../../static/trackgovApp/assets/images/logo99.png" alt="" class="logo-lg" height="19" /> {% endcomment %}
-                    <img src="../../static/trackgovApp/assets/images/logo99.png" alt="" class="logo-dark myLogo mb-1" height="19">
-                    <p class="text-white-50 mt-4">Hyper makes it easier to build better websites with
-                        <br> great speed. Save hundreds of hours of design
-                        <br> and development by using it.</p>
+                    <a href="{%  url 'home' %}">
+                        <span>
+                            <img src="{% static 'trackgovApp/assets/images/logo99.png' %}" alt="" class="logo-dark myLogo mt-1" height="19" width="119">
+                        </span>
+                    </a>
+
+                    <p class="text-white-50 mt-3">
+                        Trackgov provides an interface between you and your government
+                    </p>
 
                     <ul class="social-list list-inline mt-3">
                         <li class="list-inline-item text-center">
                             <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
                         </li>
-                        <li class="list-inline-item text-center">
-                            <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
-                        </li>
+
                         <li class="list-inline-item text-center">
                             <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
-                        </li>
-                        <li class="list-inline-item text-center">
-                            <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
                         </li>
                     </ul>
 
@@ -284,7 +311,6 @@
 
                     <ul class="list-unstyled pl-0 mb-0 mt-3">
                         <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">About Us</a></li>
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Documentation</a></li>
                         <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Blog</a></li>
                     </ul>
 
@@ -295,8 +321,6 @@
                     <h5 class="text-white">Discover</h5>
 
                     <ul class="list-unstyled pl-0 mb-0 mt-3">
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Help Center</a></li>
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Our Products</a></li>
                         <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Privacy</a></li>
                     </ul>
                 </div>

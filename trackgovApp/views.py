@@ -19,8 +19,7 @@ from rest_framework.response import Response
 from rest_framework import status, pagination
 from django.core.paginator import Paginator , EmptyPage, PageNotAnInteger
 
-
-from .models import UserRegistration, HouseOfRepsBills, HrepsPoliticiansInfo
+from .models import UserRegistration, HouseOfRepsBills, HrepsPoliticiansInfo, HrepsVotePatterns
 from .forms import UserRegistrationForm, UserLoginForm, CategoriesForm
 
 from bson import ObjectId
@@ -28,7 +27,6 @@ import pymongo
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import dns
-
 
 from shapely.geometry import shape, Point
 from django.core.serializers import serialize
@@ -41,25 +39,13 @@ else:
     # running normally
     base_dir = os.path.dirname(os.path.abspath(__file__))
 
-
-
+# getting our geo_gis file for AUS
+geo_gis_file_aus = os.path.join(base_dir, 'static/trackgovApp/data/elect_boundaries_gj.json')
 
 # Getting our connection strings, both for mongo and redis and other enviroment variables
 load_dotenv()
 
 connection_string_mongo = os.environ['MY_CONNECTION_STRING_MONGO']
-
-# getting our geo_gis file for AUS
-geo_gis_file_aus = os.path.join(base_dir, 'static/trackgovApp/data/elect_boundaries_gj.json')
-
-
-# Create your views here.
-# def index(request):
-#     template = loader.get_template('trackgovApp/index.html')
-#     context = {
-#         'greeting': 'Hello Overlord!!',
-#     }
-#     return HttpResponse(template.render(context, request))
 
 # Or we use a render
 def index(request):
@@ -74,7 +60,6 @@ def home(request):
 # login view
 def login(request):
     if request.method =='POST':
-        # print("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!!")
         form =  UserLoginForm(request.POST, request.FILES)
         if form.is_valid():
             username = form.cleaned_data['username']
@@ -102,18 +87,13 @@ def logout(request):
 # signup view
 def signup(request):
     if request.method =='POST':
-        # print("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!!")
         form =  UserRegistrationForm(request.POST, request.FILES)
         if form.is_valid():
-            # firstname = form.cleaned_data['firstname']
-            # lastname = form.cleaned_data['lastname']
             useremail = form.cleaned_data['useremail']
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
 
             # Confirmations
-            # print("Thank you user! you entered : '%s' as your firstname" % firstname)
-            # print("And : '%s' as your lastname" % lastname)
             print("And selected : '%s' as your username" % useremail)
             print("And: '%s' as your username" % username)
             print("And : '%s' as your phone" % password)
@@ -176,7 +156,6 @@ def signup(request):
 # recover password view
 def recoverpw(request):
     if request.method =='POST':
-        # print("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!!")
         form =  UserLoginForm(request.POST, request.FILES)
         if form.is_valid():
             username = form.cleaned_data['username']
@@ -202,16 +181,13 @@ def dashboard(request):
 # categories view
 def categories(request):
     if request.method =='POST':
-        # print("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!!")
+        print('Hello!!!')
         form =  CategoriesForm(request.POST, request.FILES)
         if form.is_valid():
             res_data = form.cleaned_data['categories']
             res_lat = form.cleaned_data['lat']
             res_lng = form.cleaned_data['lng']
-            # print(res_data)
 
-
-            # bill_list = HouseOfRepsBills.objects.filter(date__in=['03 Sep 2020', '13 May 2020', '29 May 2020'])
             category_list = []
             for data_item in res_data:
                 if 'business' in data_item:
@@ -252,7 +228,6 @@ def categories(request):
                     category_list.append('Foreign Affairs and Trade')
                     
                 elif 'guns' in data_item:
-                    # print('Guns here!!!')
                     category_list.append('Home Affairs')
 
                 elif 'healthcare' in data_item:
@@ -336,10 +311,7 @@ def dashboard_bills_list(request):
 
     print('Hello!!!')
     userlocation_lat = float(request.GET.get('lat'))
-    userlocation_lng = float(request.GET.get('lng')) 
-
-    # global res_object1
-    # res_object1 = {}
+    userlocation_lng = float(request.GET.get('lng'))
     
     print('Lat is: ', userlocation_lat)
     print('Long is: ', userlocation_lng)
@@ -349,7 +321,6 @@ def dashboard_bills_list(request):
     with open(geo_gis_file_aus) as f:
         boundaries = json.load(f)
     point = Point(userlocation_lat, userlocation_lng)
-    # print(point)
 
     global feature_found
     feature_found = None
@@ -363,16 +334,9 @@ def dashboard_bills_list(request):
 
 
     if elect_div is not None:
-        # response = serialize('json', HrepsPoliticiansInfo.objects.filter(elec_div__icontains=elect_div))
         res_object1 = HrepsPoliticiansInfo.objects.filter(elec_div__icontains=elect_div)
-        print(len(res_object1))
-        # context = {
-        #     'ourRange0': range(3),
-        #     'bio_object': response_object[0]
-        # }
 
         if len(res_object1) == 0:
-            # return JsonResponse("Electoral div '" + elect_div + "' not found in excel sheet.", safe=False)
             print("Electoral div '" + elect_div + "' not found in excel sheet.")
             pass
 
@@ -380,14 +344,11 @@ def dashboard_bills_list(request):
         pass
 
 
-
     # Filtering out the categories
-    # list_filter = []
     category_list = request.GET.get('filter_list')
     category_list = ast.literal_eval(category_list)  # make it return to its original object form rather than as string
     if category_list == None:
         print('List is empty: ', category_list)
-        # bill_list = HouseOfRepsBills.objects.all()
         res_object2 = HouseOfRepsBills.objects.filter(category__in=category_list)
 
     else:
@@ -395,12 +356,10 @@ def dashboard_bills_list(request):
         res_object2 = HouseOfRepsBills.objects.filter(category__in=category_list)
 
 
-
-
     context = {
         'ourRange0': range(3),
         'bio_object': res_object1[0],
-        'bill_list': res_object2
+        'bill_list': res_object2,
     }        
     return render(request, 'trackgovApp/bills-list.html', context=context)
 
@@ -408,9 +367,23 @@ def dashboard_bills_list(request):
 
 
 # Dashboard bills detail page view
-def dashboard_bill_detail(request, bill_id):
+# def dashboard_bill_detail(request, bill_id):
+def dashboard_bill_detail(request, bill_id, rep_name):
+    bio_object = HrepsPoliticiansInfo.objects.filter(name__icontains=rep_name)
+
+    rep_name = rep_name.strip('Dr').strip('Hon').strip('Mr').strip('Ms').strip('Mrs').strip()
+    rep_name_list = rep_name.split(' ')
+    for rep_namee in rep_name_list:
+        res_object0 = HrepsVotePatterns.objects.filter(politician_name__icontains=rep_namee)
+        if len(res_object0) != 0:
+            res_object1 = HrepsVotePatterns.objects.filter(politician_name__icontains=rep_namee)
+        else:
+            pass
+    print('Length of rep_vote obj is: ', len(res_object0) )
     context = {
-        'bill': get_object_or_404(HouseOfRepsBills, pk=bill_id)
+        'bill': get_object_or_404(HouseOfRepsBills, pk=bill_id),
+        'rep_vote': res_object1[0],
+        'bio_object': bio_object[0]
     }
     return render(request, 'trackgovApp/bill-detail.html', context=context)
 
@@ -423,67 +396,34 @@ def show_location(request):
     return render(request, 'trackgovApp/userlocation.html')
 
 # politician's bio view
-def politician_bio(request):
-    # 1) Location (lat long) are detected. 
-    # 2) These lat long search the boundary in which they lie. If user is in Australia it will find a feature. Which is stored in feature_found variable. 
-    # 3) you can access state, elect_div and other attributes of shape file using feature_found variable, which contains an object of these
-    
-    # in JsonResponse(response, safe=false)
-    # This will give you actual response that is formed by serializer. 
-    # It has some other information, but we need only fields data.
-    # Thats why i have returned response[0][‘fields’]
-        
-    if request.method == 'GET':
-        # userlocation_lat = int(float(request.GET['lat']))
-        # userlocation_lng = int(float(request.GET['lng']))
+def politician_bio(request, rep_name):
+    bio_object = HrepsPoliticiansInfo.objects.filter(name__icontains=rep_name)
 
-        userlocation_lat = float(request.GET['lat'])
-        userlocation_lng = float(request.GET['lng'])
-        
-        print('Hello!')
+    # rep_name = rep_name.strip('Dr').strip('Hon').strip('Mr').strip('Ms').strip('Mrs').strip()
+    # rep_name_list = rep_name.split(' ')
+    # for rep_namee in rep_name_list:
+    #     res_object0 = HrepsVotePatterns.objects.filter(politician_name__icontains=rep_namee)
+    #     if len(res_object0) != 0:
+    #         res_object1 = HrepsVotePatterns.objects.filter(politician_name__icontains=rep_namee)
+    #     else:
+    #         pass
+    # print('Length of rep_vote obj is: ', len(res_object0))
+    context = {
+        # 'bill': get_object_or_404(HouseOfRepsBills, pk=bill_id),
+        # 'rep_vote': res_object1[0],
+        'bio_object': bio_object[0]
+    }
+    return render(request, 'trackgovApp/politician-bio.html', context=context)
 
-        print('Lat is: ', userlocation_lat)
-        print('Long is: ', userlocation_lng)
-        # test_gis_list = [[], []]
-        
-        global boundaries
-        boundaries = None
-        with open(geo_gis_file_aus) as f:
-            boundaries = json.load(f)
-        point = Point(userlocation_lat, userlocation_lng)
-        # print(point)
 
-        global feature_found
-        feature_found = None
-        elect_div = None
-        for feature in boundaries['features']:
-            polygon = shape(feature['geometry'])
-            if polygon.contains(point):
-                feature_found = feature
-                elect_div = feature["properties"]["Elect_div"]
-                print(elect_div)
 
-        if elect_div is not None:
-            # response = serialize('json', HrepsPoliticiansInfo.objects.filter(elec_div__icontains=elect_div))
-            response_object = HrepsPoliticiansInfo.objects.filter(elec_div__icontains=elect_div)
-            # print(len(response_object))
-            context = {
-                'ourRange0': range(3),
-                'bio_object': response_object[0]
-            }
 
-            if len(response_object) == 0:
-                return JsonResponse("Electoral div '" + elect_div + "' not found in excel sheet.", safe=False)
-            return render(request, 'trackgovApp/politician-bio.html', context=context)
 
-            # Perform our model filtering operation using the "elect_div" as our filtering constraint
+# Testing Django session cookies
+def session_cookies_test(request):
+    return ""
 
-        else:
-            return JsonResponse("User Do not lie in any electoral division of Australia", safe=False)
-    else:
-        return HttpResponseBadRequest()
 
-    # return render(request, 'trackgovApp/politician-bio.html')
 
 
 

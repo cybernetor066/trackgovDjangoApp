@@ -4,7 +4,7 @@
 
     <!-- Begin page -->
     <div class="wrapper">
-        {% comment %} <!-- ========== Left Sidebar Start ========== -->
+        <!-- ========== Left Sidebar Start ========== -->
         <div class="left-side-menu">
 
             <div class="h-100" id="left-side-menu-container" data-simplebar>
@@ -64,7 +64,7 @@
             <!-- Sidebar -left -->
 
         </div>
-        <!-- Left Sidebar End --> {% endcomment %}
+        <!-- Left Sidebar End -->
 
         <!-- ============================================================== -->
         <!-- Start Page Content here -->
@@ -73,41 +73,67 @@
         <div class="content-page content-page-bill-list-custom">
             <div class="content">
                 <!-- Start Content-->
-                <div class="container-fluid">
-                    {% comment %} <!-- start page title -->
-                    <div class="row">
-                        <div class="page-title-box">
-                            <h4 class="page-title"> TRACKING BILLS</h4>
-                        </div>
-                    </div>     
-                    <!-- end page title -->    {% endcomment %}
+                <div class="container-fluid mt-lg-1 mt-md-1 mt-sm-1 mt-xl-4">
 
-
-                    <div class="row">
-                        <div class="col-sm-9 pl-0">
+                    <div class="row mb-3">
+                        {% comment %} <div class="col-sm-9 pl-0"> {% endcomment %}
+                        <div class="col-lg-6 col-md-4 col-xl-4 col-sm-6 pl-0">
                             <!-- Profile -->
-                            <div class="card bg-primary">
+                            <div class="card">
                                 <div class="card-body profile-user-box">
 
                                     <div class="media">
-                                        <span class="float-left m-2 mr-4"><img src="{{ bio_object.profile_picture }}" style="height: 100px;" alt="" class="rounded-circle img-thumbnail"></span>
+                                        {% comment %} <div class="mr-3"> {% endcomment %}
+                                            <span class="float-left m-0 mr-3"><img src="{{ bio_object.profile_picture }}" style="height: 100px;" alt="" class="rounded-circle img-thumbnail"></span>
+                                        {% comment %} </div> {% endcomment %}
+
                                         <div class="media-body">
-                                            
-                                            {% comment %} <span class="text-left mt-3"> {% endcomment %}
+                                            <div class="mt-2">
+                                                <span class="bills-list-title-custom">
+                                                    <a id="" href="{% url 'politicianbio' bio_object.name %}">
+                                                        <span class="text-white"> {{ bio_object.name }}</span>
+                                                        {{ entries.title_of_bill }}
+                                                    </a>
+                                                </span>
+                                                <span class="badge badge-danger badge-pill">Federal </span>
+
+                                                <p class="font-13 text-white-50"> Your electorate : {{ bio_object.elec_div }} </p>
+
+                                            </div>
+
+
                                             <div>
                                                 <ul class="social-list list-inline mb-1">
-                                                    <li class="list-inline-item">
-                                                        <h4 class="text-white">{{ bio_object.name }}</h4>
-                                                    </li>
-                                                    {% comment %} <br /> {% endcomment %}
                                                     <li class="list-inline-item text-center">
-                                                        <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary">
-                                                            <i class="mdi mdi-facebook"></i>
+                                                        <a href="javascript: void(0);" class="social-list-item border-white text-white">
+                                                            <i class="mdi mdi-wikipedia"></i>
                                                         </a>
                                                     </li>
                                                     <li class="list-inline-item text-center">
-                                                        <a href="javascript: void(0);" class="social-list-item border-danger text-danger">
-                                                            <i class="mdi mdi-google"></i>
+                                                        <a href="javascript: void(0);" class="social-list-item border-primary text-primary">
+                                                            <i class="mdi mdi-web"></i>
+                                                        </a>
+                                                    </li>
+                                                    {% comment %} <li class="list-inline-item text-center mr-2">
+                                                        <span class="text-white-50 ml-1">
+                                                            <i>contact:</i>
+                                                        </span>
+                                                    </li> {% endcomment %}
+                                                    <li class="list-inline-item text-center">
+                                                        <a href="javascript: void(0);" class="social-list-item">
+                                                            <i class="mdi mdi-mailbox"></i>
+                                                        </a>
+                                                    </li>
+
+                                                    <li class="list-inline-item text-center">
+                                                        <a href="javascript: void(0);" class="social-list-item border-success text-success">
+                                                            <i class="mdi mdi-phone"></i>
+                                                        </a>
+                                                    </li>
+
+                                                    <li class="list-inline-item text-center">
+                                                        <a href="javascript: void(0);" class="social-list-item border-warning text-warning">
+                                                            <i class="mdi mdi-email-edit"></i>
                                                         </a>
                                                     </li>
                                                     <li class="list-inline-item text-center">
@@ -116,26 +142,23 @@
                                                         </a>
                                                     </li>
                                                     <li class="list-inline-item text-center">
+                                                        <a href="javascript: void(0);" class="social-list-item border-primary text-primary">
+                                                            <i class="mdi mdi-facebook"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item text-center">
+                                                        <a href="javascript: void(0);" class="social-list-item border-primary text-primary">
+                                                            <i class="mdi mdi-facebook-messenger"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item text-center">
                                                         <a href="javascript: void(0);" class="social-list-item border-danger text-danger">
-                                                            <i class="mdi mdi-pinterest"></i>
+                                                            <i class="mdi mdi-instagram"></i>
                                                         </a>
                                                     </li>
-                                                    <li class="list-inline-item text-center">
-                                                        <a href="javascript: void(0);" class="social-list-item border-success text-success">
-                                                            <i class="mdi mdi-phone"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item text-center">
-                                                        <a href="javascript: void(0);" class="social-list-item border-warning text-warning">
-                                                            <i class="mdi mdi-email"></i>
-                                                        </a>
-                                                    </li>
+
                                                 </ul>
                                             </div>
-                                            {% comment %} </span> {% endcomment %}
-                                            <p class="font-13 text-white-50"> Electorate </p>
-                                            <br />
-                                            <p class="font-6 text-white btn btn-info btn-rounded"> Wiki </p>
                                         </div> <!-- end media-body-->
                                     </div>
 
@@ -146,34 +169,37 @@
                     </div>
                     <!-- end row -->
                     
-                    <div class="row">
-                        <table class="table table-dark mb-0">
-                            <thead>
+                    <div class="row card mb-3">
+                        <table class="table table-responsive-lg table-responsive-md table-responsive-sm table-centered mb-0">
+                            <thead class="">
                                 <tr>
                                     <th>TRACKING BILLS</th>
-                                    <th>STATUS</th>
+                                    {% comment %} <th><span class="col-md-6 ml-lg-2 ml-xl-4 ml-md-4 ml-sm-2">PROGRESS</span></th> {% endcomment %}
+                                    <th>PROGRESS</th>
                                     <th>COMMENTS</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for _ in ourRange0 %}
                                     <tr>
-                                        <td>
+                                        <td class="w-50">
                                             <span class="bills-list-title-custom">
-                                                <a id="" href="{% url 'dashboardbilldetail' 1 %}">ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]</a>
+                                                <a id="" href="{% url 'dashboardbilldetail' 1 'KaranGanesh' %}">ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]</a>
                                             </span> 
                                         </td>
-                                        <td>
-                                            <div class="progress-w-percent mb-0">
-                                                <span class="progress-value"></span>
-                                                <div class="progress progress-sm">
-                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 60%;" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <td class="w-25">
+                                            {% comment %} <div class="progress-w-percent mb-0"> {% endcomment %}
+                                            {% comment %} <div class="col-md-6"> {% endcomment %}
+                                                {% comment %} <span class="progress-value"></span> {% endcomment %}
+                                                <div class="progress progress-lg progress-md progress-sm">
+                                                    <div class="progress-bar progress-lg progress-md progress-sm bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
-                                            </div>
+                                            {% comment %} </div> {% endcomment %}
+                                            {% comment %} </div> {% endcomment %}
                                         </td>
-                                        <td>
+                                        <td class="w-25">
                                             <div>
-                                                <span class="uil uil-comments-alt"></span> 148 Comments
+                                                <span class="uil uil-comments-alt ml-3"></span> 148
                                             </div>
                                         </td>
                                     </tr>
@@ -181,17 +207,16 @@
                             </tbody>
                         </table>
                     </div>
-                    <br />
                     <!-- end row -->
 
 
                     {% comment %} Start row {% endcomment %}
-                    <div class="row">
-                        <table class="table table-dark mb-0">
+                    <div class="row card">
+                        <table class="table table-responsive-lg table-responsive-md table-responsive-sm table-centered mb-0">
                             <thead>
                                 <tr>
                                     <th>NEW BILLS</th>
-                                    <th>TRACK</th>
+                                    <th>TRACK?</th>
                                     <th></th>
                                     <th>COMMENTS</th>
                                 </tr>
@@ -201,24 +226,24 @@
                                     <tr>
                                         <td>
                                             <span class="bills-list-title-custom">
-                                                <a id="" href="{% url 'dashboardbilldetail' entries.id %}">{{ entries.title_of_bill }}</a>
+                                                <a id="" href="{% url 'dashboardbilldetail' entries.id bio_object.name %}">{{ entries.title_of_bill }}</a>
                                             </span> 
                                         </td>
                                         <td>
                                             <!-- Switch-->
-                                            <div>
+                                            <div class="mt-1">
                                                 <input type="checkbox" id="switch{{ entries.id }}" data-switch="success"/>
                                                 <label for="switch{{ entries.id }}" data-on-label="Yes" data-off-label="No" class="mb-0 d-block"></label>
                                             </div>
                                         </td>
                                         <td>
                                             <a href="{{ entries.link_to_bill }}" >
-                                                <button class="btn btn-rounded btn-info font-11">READ</button>
+                                                <button class="btn btn-rounded btn-info font-10">READ</button>
                                             </a>
                                         </td>
                                         <td>
-                                            <div>
-                                                <span class="uil uil-comments-alt"></span> 148 Comments
+                                            <div class="mt-1">
+                                                <span class="uil uil-comments-alt ml-lg-3"></span> 148
                                             </div>
                                         </td>
                                     </tr>
@@ -242,91 +267,11 @@
         <!-- End Page content -->
         <!-- ============================================================== -->
 
+
     </div>
     <!-- END wrapper -->
-
-<script>
-    var coll = document.getElementsByClassName("collapsible-custom");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function() {
-        this.classList.toggle("active-custom");
-        var content = this.nextElementSibling;
-        if (content.style.maxHeight){
-        content.style.maxHeight = null;
-        } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-        } 
-    });
-    }
-</script>
 
 {% endblock content %}
 
 
 
-
-{% block footer %}
-    <!-- START FOOTER -->
-    {% comment %} <footer class="bg-dark py-5"> {% endcomment %}
-    <footer class="">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 shift-footer-right">
-                    <img src="../../static/trackgovApp/assets/images/logo.png" alt="" class="logo-dark" height="18" />
-                    <p class="text-white-50 mt-4">Hyper makes it easier to build better websites with
-                        <br> great speed. Save hundreds of hours of design
-                        <br> and development by using it.</p>
-
-                    <ul class="social-list list-inline mt-3">
-                        <li class="list-inline-item text-center">
-                            <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
-                        </li>
-                        <li class="list-inline-item text-center">
-                            <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
-                        </li>
-                        <li class="list-inline-item text-center">
-                            <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
-                        </li>
-                        <li class="list-inline-item text-center">
-                            <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
-                        </li>
-                    </ul>
-
-                </div>
-
-                <div class="col-lg-2 mt-3 mt-lg-0">
-                    <h5 class="text-white">Company</h5>
-
-                    <ul class="list-unstyled pl-0 mb-0 mt-3">
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">About Us</a></li>
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Blog</a></li>
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Contact</a></li>
-                    </ul>
-
-                </div>
-
-                <div class="col-lg-2 mt-3 mt-lg-0">
-                    <h5 class="text-white">Discover</h5>
-
-                    <ul class="list-unstyled pl-0 mb-0 mt-3">
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Help Center</a></li>
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Our Products</a></li>
-                        <li class="mt-2"><a href="javascript: void(0);" class="text-white-50">Privacy</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4 shift-footer-right1">
-                    <div class="">
-                        <p class="text-white-50 text-center mb-3"> © Karan Ganesh <script>document.write(new Date().getFullYear()) </script> - trackgov.com </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- END FOOTER -->
-{% endblock footer %}

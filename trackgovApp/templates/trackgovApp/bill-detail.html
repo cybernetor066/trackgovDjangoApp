@@ -1,11 +1,8 @@
 {% extends 'trackgovApp/base.html' %}
-{% block title %} Track Bill | Trackgov Dashboard {% endblock title %}
+{% block title %} Track Bill | Trackgov Dashboard Bill Detail {% endblock title %}
+
+
 {% block content %}
-    {% comment %} {% block navMenu %}
-
-    {% endblock navMenu %} {% endcomment %}
-
-
     <!-- Begin page -->
     <div class="wrapper">
         <!-- ========== Left Sidebar Start ========== -->
@@ -76,37 +73,13 @@
 
         <div class="content-page content-page-custom">
             <div class="content">
-                {% comment %} <!-- Topbar Start -->
-                <div class="navbar-custom">
-                    <ul class="list-unstyled topbar-right-menu float-right mb-0">
-                        <li class="dropdown notification-list d-lg-none">
-                            <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <i class="dripicons-search noti-icon"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
-                                <form class="p-3">
-                                    <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
-                                </form>
-                            </div>
-                        </li>                        
-                    </ul>
-                    
-                    
-                    <button class="button-menu-mobile open-left disable-btn">
-                        <i class="mdi mdi-menu"></i>
-                    </button>
-                    
-                    <div class="app-search dropdown d-none d-lg-block">            
-                    </div>
-                </div>
-                <!-- end Topbar --> {% endcomment %}
 
                 <!-- Start Content-->
                 <div class="container-fluid">
                     
                     <!-- start page title -->
-                    <div class="row mt-1">
-                        <div class="col-12">
+                    <div class="row mt-lg-0 mt-md-5 mt-sm-3">
+                        <div class="col-lg-12 col-md-8 col-sm-4 mt-xl-5">
                             <div class="page-title-box">
                                 <h4 class="page-title">{{ bill.title_of_bill }}</h4>
                             </div>
@@ -134,6 +107,7 @@
                                         </div>
                                     </div>
                                     <div class="process-line" style="width: 0%;"></div>
+                                    
                                 {% else %}
                                     <div class="horizontal-steps-content">
                                         <div class="step-item">
@@ -156,7 +130,26 @@
                         </div>
                     </div>
                     <!-- end row -->    
-                    
+
+                    <!-- Switch-->
+                    <div class="row justify-content-center">
+                        {% comment %} <div class="col-lg-12"> {% endcomment %}
+                            <div class="mt-1 mb-3">
+                                Track
+                            </div>
+
+                            <div class="mt-1 mb-3 ml-1">
+                                <input type="checkbox" id="switch{{ bill.id }}" data-switch="success"/>
+                                <label for="switch{{ bill.id }}" data-on-label="Yes" data-off-label="No" class="mb-0 d-block"></label>
+                            </div>
+
+                            <div class="mt-0 mb-3 ml-5">
+                                <a href="{{ bill.link_to_bill }}" >
+                                    <button class="btn btn-rounded btn-info font-10">READ</button>
+                                </a>
+                            </div>
+                        {% comment %} </div> {% endcomment %}
+                    </div> 
                     
                     <div class="row">
                         <div class="col-lg-3">
@@ -244,20 +237,24 @@
 
 
                         <div class="col-lg-3">
-                            {% comment %} <div class="row"> {% endcomment %}
                                 <div class="card">
                                     <div class="card-body">
-                                        {% comment %} <h4 class="header-title mb-3">PROPOSED AMENDMENTS</h4> {% endcomment %}
 
                                         <div class="card text-center">
                                             <div class="card-body">
-                                                <img src="../../static/trackgovApp/assets/images/users/avatar-1.jpg" class="rounded-circle avatar-lg img-thumbnail"
+                                                <img src="{{ bio_object.profile_picture }}" class="rounded-circle avatar-lg img-thumbnail"
                                                 alt="profile-image">
 
-                                                <span class="link-to-politicianbio-custom">
-                                                    <a href="{% url 'politicianbio' %}"><h4 class="mb-0 mt-2">Dominic Keller</h4></a>
+                                                {% comment %} <span class="link-to-politicianbio-custom">
+                                                    <a href="{% url 'politicianbio' %}"><h4 class="mb-0 mt-2">{{ rep_vote.politician_name }}</h4></a>
                                                 </span> 
-                                            
+                                             {% endcomment %}
+                                                <span class="bills-list-title-custom">
+                                                    <a id="" href="{% url 'politicianbio' bio_object.name %}">
+                                                        <h4 class="mb-0 mt-2">{{ rep_vote.politician_name }}</h4>
+                                                    </a>
+                                                </span>
+
                                                 <p class="text-muted font-14">Electorate</p>
 
                                                 <div class="text-left mt-3">
@@ -266,8 +263,6 @@
                                                     <p class="text-muted mb-2 font-13"><strong>Second Reading Agreed :</strong><span class="ml-2">No</span></p>
 
                                                     <p class="text-muted mb-2 font-13"><strong>Third Reading Agreed :</strong> <span class="ml-2 ">Yes</span></p>
-
-                                                    {% comment %} <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span class="ml-2">USA</span></p> {% endcomment %}
                                                 </div>
 
                                                 <ul class="social-list list-inline mt-3 mb-0">
@@ -283,10 +278,6 @@
                                                         <a href="javascript: void(0);" class="social-list-item border-info text-info"><i
                                                                 class="mdi mdi-twitter"></i></a>
                                                     </li>
-                                                    {% comment %} <li class="list-inline-item">
-                                                        <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i
-                                                                class="mdi mdi-github-circle"></i></a>
-                                                    </li> {% endcomment %}
                                                 </ul>
                                             </div> <!-- end card-body -->
                                         </div> <!-- end card -->
@@ -341,40 +332,6 @@
                                             </table>
                                         </div>
                                         <!-- end table-responsive -->
-
-
-
-                                        {% comment %} <ul class="list-unstyled mb-0">
-                                            <li>
-                                                <p class="mb-2"><span class="font-weight-bold mr-2">Government [sheet RW122]</span>
-                                                    <a
-                                                        id="main_0_content_0_lvResults_hlBill_0"
-                                                        aria-label="Bill link - ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]"
-                                                        rel="noopener noreferrer"
-                                                        href=""
-                                                        target=""
-                                                        >
-                                                        <button class="btn btn-rounded btn-info font-11">READ</button>
-                                                    </a>
-                                                </p>
-                                            </li>
-
-                                            <li>
-                                                <p class="mb-2"><span class="font-weight-bold mr-2">KING, Catherine, MP</span>
-                                                    <a
-                                                        id="main_0_content_0_lvResults_hlBill_0"
-                                                        aria-label="Bill link - ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]"
-                                                        rel="noopener noreferrer"
-                                                        href=""
-                                                        target=""
-                                                        >
-                                                        <button class="btn btn-rounded btn-info font-11">READ</button>
-                                                    </a>
-                                                </p>
-                                            </li>
-
-                                        </ul>
-                                        {% endcomment %}
                                     </div>
                                 </div>
                             </div> <!-- end row -->

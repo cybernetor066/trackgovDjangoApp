@@ -232,25 +232,34 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <!-- Profile -->
-                        <div class="card bg-primary">
+                        <div class="card">
                             <div class="card-body profile-user-box">
 
                                 <div class="row">
                                     <div class="col-sm-8">
                                         <div class="media">
                                             <span class="float-left m-2 mr-4"><img src="{{ bio_object.profile_picture }}" style="height: 100px;" alt="" class="rounded-circle img-thumbnail"></span>
-                                            <div class="media-body">
+                                            <div class="media-body">    
+                                                <div>
+                                                    <h4 class="text-white"> Your federal representative: {{ bio_object.name }}</h4>
+                                                    <p class="font-13 text-white-50"> Your electorate : {{ bio_object.elec_div }} </p>
 
-                                                
-                                                {% comment %} <span class="text-left mt-3"> {% endcomment %}
+                                                </div>
+
                                                 <div>
                                                     <ul class="social-list list-inline mb-1">
-                                                        <li class="list-inline-item">
-                                                            <h4 class="text-white">{{ bio_object.name }}</h4>
-                                                        </li>
-                                                        {% comment %} <br /> {% endcomment %}
                                                         <li class="list-inline-item text-center">
-                                                            <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary">
+                                                            <a href="javascript: void(0);" class="social-list-item border-white text-white">
+                                                                <i class="mdi mdi-wikipedia"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="list-inline-item text-center mr-3">
+                                                            <span class="text-white-50 ml-1">
+                                                                <i>contact:</i>
+                                                            </span>
+                                                        </li>
+                                                        <li class="list-inline-item text-center">
+                                                            <a href="javascript: void(0);" class="social-list-item border-primary text-primary">
                                                                 <i class="mdi mdi-facebook"></i>
                                                             </a>
                                                         </li>
@@ -281,10 +290,6 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                {% comment %} </span> {% endcomment %}
-                                                <p class="font-13 text-white-50"> Electorate </p>
-                                                <br />
-                                                <p class="font-6 text-white btn btn-info btn-rounded"> Wiki </p>
                                             </div> <!-- end media-body-->
                                         </div>
                                     </div> <!-- end col-->

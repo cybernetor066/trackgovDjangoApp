@@ -3,13 +3,7 @@
 {% block content %}
 
 
-{% load static %}
-    <script type="text/javascript" src="{% static 'trackgovApp/js/select-all.js' %}"></script>
-    {% comment %} {% block navMenu %}
-
-    {% endblock navMenu %} {% endcomment %}
-
-
+    {% load static %}
     <!-- Begin page -->
     <div class="wrapper">
         <!-- ========== Left Sidebar Start ========== -->
@@ -80,9 +74,8 @@
         <div class="content-page content-page-categories-custom">
             <div class="content">
                 <div class="container-fluid">
-                    {% comment %} <p class="font-weight-bold ml-5">SELECT AT LEAST ONE TOPIC</p> {% endcomment %}
-                        <div class="row w-50 ml-5">
-                            <div class="col-sm">
+                        <div class="row ml-lg-5 ml-md-3 ml-sm-3">
+                            <div class="col-lg-4 col-md-2 col-sm-2">
                                 <p class="font-weight-bold">SELECT AT LEAST ONE TOPIC</p>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
@@ -94,9 +87,6 @@
                                 </ul>
                                 <form action="" method="POST" enctype="multipart/form-data">
                                     {% csrf_token %}
-                                    {% comment %} <div class="row w-50 ml-5">
-                                        {{ form }}
-                                    </div> {% endcomment %}
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
                                         <div class="custom-control custom-checkbox">
@@ -313,7 +303,6 @@
 
                                     <div class="mt-3 mb-5">
                                         <input type="submit" value="Next" class="btn btn-success">
-                                        {% comment %} <a href="{%  url 'dashboardbillslist' %}" class="btn btn-success ml-2">Next<i class="mdi mdi-arrow-right ml-1"></i></a> {% endcomment %}
                                     </div>
                                     
 
@@ -359,7 +348,8 @@
                 }
             </script>
         </div>
-
+        
+        <script type="text/javascript" src="{% static 'trackgovApp/js/select-all.js' %}"></script>
     </div>
     <!-- END wrapper -->
 

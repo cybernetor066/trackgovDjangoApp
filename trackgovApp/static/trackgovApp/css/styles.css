@@ -1,7 +1,8 @@
 /* Body */
 body {
-    background-color: rgb(34, 34, 36) !important;
-    color: whitesmoke !important;
+    /* background-color: rgb(34, 34, 36) !important; */
+    /* color: whitesmoke !important; */
+    height: 100%;
 }
 
 /* Dashboard */
@@ -209,3 +210,23 @@ margin-left: 5px;
     color: white !important;
     text-decoration: underline;
 }
+
+
+
+/* .web-custom {
+    color: rgb(144, 248, 253)!important;
+    border-color: rgb(144, 248, 253)!important;
+} */
+
+
+
+.facebook-custom {
+    color: rgb(28, 116, 244)!important;
+    border-color: rgb(28, 116, 244)!important;
+}
+
+.facebook-custom:hover {
+    color: rgb(40, 84, 148)!important;
+    /* border-color: rgb(28, 116, 244)!important; */
+}
+

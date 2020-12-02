@@ -2,53 +2,15 @@
 {% block title %} Track Gov Login {% endblock title %}
 {% block content %}
 
-    {% comment %} <div class="padding container d-flex justify-content-center">
-        <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <img src="../../static/trackgovApp/assets/logo3.png" class="img-fluid w-25 mt-3 justify-content-center myLogo" alt="">
-            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-            <div class="fieldWrapper">
-                <label for="{{ form.username.Username }}">Username</label>
-                {{ form.username.errors }}
-                {{ form.username }}
-            </div>
-
-            <div class="fieldWrapper mt-3 mb-5">
-                <label for="{{ form.password.Password }}">Password</label>
-                {{ form.password.errors }}
-                {{ form.password }}
-            </div>
-
-
-            <div class="flex-sb-m w-full p-t-3 p-b-24">
-                <div class="contact100-form-checkbox">
-                    <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                    <label class="label-checkbox100" for="ckb1">Remember me</label>
-                    <span class="float-md-right">
-                        <a href="#" class>
-                            Forgot?
-                        </a>
-                    </span>
-                </div>
-            </div>
-            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign in">
-        </form>
-    </div> {% endcomment %}
-
-
-
-
     <div class="account-pages mt-3 mb-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-5">
                     <div class="card">
-
                         <!-- Logo -->
-                        <div class="card-header pt-4 pb-4 text-center bg-primary">
+                        <div class="card-header pt-4 pb-4 text-center">
                             <a href="{%  url 'home' %}">
-                                {% comment %} <img src="../../static/trackgovApp/assets/logo3.png" class="img-fluid w-25 mt-3 justify-content-center myLogo" alt=""> {% endcomment %}
-                                <span><img src="../../static/trackgovApp/assets/images/logo.png" alt="" height="18"></span>
+                                <span><img src="../../static/trackgovApp/assets/images/logo99.png" alt="" height="23" width="123"></span>
                             </a>
                         </div>
 
@@ -61,32 +23,11 @@
 
                             <form action="" method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
-                                {% comment %} <div class="fieldWrapper form-group">
-                                    <label for="{{ form.username.Username }}">Username</label>
-                                    {{ form.username.errors }}
-                                    {{ form.username }}
-                                </div> {% endcomment %}
-
                                 <div class="form-group">
                                     <label for="{{ form.username.Username }}">Username</label>
                                     {{ form.username.errors }}
                                     <input class="form-control" type="text" id="username" name="username" required="" placeholder="Enter your username">
                                 </div>
-
-
-                                {% comment %} <div class="form-group">
-                                    <a href="pages-recoverpw.html" class="text-muted float-right"><small>Forgot your password?</small></a>
-                                    <div class="fieldWrapper mt-3 mb-5 input-group input-group-merge">
-                                        <label for="{{ form.password.Password }}">Password </label>
-                                        {{ form.password.errors }}
-                                        {{ form.password }}
-                                        <div class="input-group-append" data-password="false">
-                                            <div class="input-group-text">
-                                                <span class="password-eye"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> {% endcomment %}
 
                                 <div class="form-group">
                                     <a href="{% url 'recoverpw' %}" class="text-muted float-right"><small>Forgot your password?</small></a>
