@@ -2,6 +2,7 @@
 {% block title %} Track Bill | Trackgov Dashboard {% endblock title %}
 {% block content %}
 
+    {% load static %}
     <!-- Begin page -->
     <div class="wrapper">
         <!-- ========== Left Sidebar Start ========== -->
@@ -96,8 +97,13 @@
                                                     </a>
                                                 </span>
                                                 <span class="badge badge-danger badge-pill">Federal </span>
+                                                <br />
 
-                                                <p class="font-13 text-white-50"> Your electorate : {{ bio_object.elec_div }} </p>
+                                                <span class="font-13 text-white-50"> Your electorate : {{ bio_object.elec_div }} </span>
+                                                <br />
+
+                                                <span class="font-13 text-white-50"> Party : {{ bio_object.party }} </span>
+
 
                                             </div>
 
@@ -174,28 +180,22 @@
                             <thead class="">
                                 <tr>
                                     <th>TRACKING BILLS</th>
-                                    {% comment %} <th><span class="col-md-6 ml-lg-2 ml-xl-4 ml-md-4 ml-sm-2">PROGRESS</span></th> {% endcomment %}
                                     <th>PROGRESS</th>
                                     <th>COMMENTS</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                {% for _ in ourRange0 %}
+                            <tbody id="tracking-table-body">
+                                {% for bill in tracked_bills %}
                                     <tr>
                                         <td class="w-50">
                                             <span class="bills-list-title-custom">
-                                                <a id="" href="{% url 'dashboardbilldetail' 1 'KaranGanesh' %}">ABC Amendment (Online and Multichannelling Services) Bill 2001 [2002]</a>
+                                                <a id="" href="{% url 'dashboardbilldetail' bill.id bio_object.name %}">{{ bill.title_of_bill }}</a>
                                             </span> 
                                         </td>
                                         <td class="w-25">
-                                            {% comment %} <div class="progress-w-percent mb-0"> {% endcomment %}
-                                            {% comment %} <div class="col-md-6"> {% endcomment %}
-                                                {% comment %} <span class="progress-value"></span> {% endcomment %}
-                                                <div class="progress progress-lg progress-md progress-sm">
-                                                    <div class="progress-bar progress-lg progress-md progress-sm bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            {% comment %} </div> {% endcomment %}
-                                            {% comment %} </div> {% endcomment %}
+                                            <div class="progress progress-lg progress-md progress-sm">
+                                                <div class="progress-bar progress-lg progress-md progress-sm bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
                                         </td>
                                         <td class="w-25">
                                             <div>
@@ -223,30 +223,58 @@
                             </thead>
                             <tbody>
                                 {% for entries in bill_list %}
-                                    <tr>
-                                        <td>
-                                            <span class="bills-list-title-custom">
-                                                <a id="" href="{% url 'dashboardbilldetail' entries.id bio_object.name %}">{{ entries.title_of_bill }}</a>
-                                            </span> 
-                                        </td>
-                                        <td>
-                                            <!-- Switch-->
-                                            <div class="mt-1">
-                                                <input type="checkbox" id="switch{{ entries.id }}" data-switch="success"/>
-                                                <label for="switch{{ entries.id }}" data-on-label="Yes" data-off-label="No" class="mb-0 d-block"></label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="{{ entries.link_to_bill }}" >
-                                                <button class="btn btn-rounded btn-info font-10">READ</button>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <div class="mt-1">
-                                                <span class="uil uil-comments-alt ml-lg-3"></span> 148
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    {% if entries.id in bills_id_tracked %}
+                                        <tr>
+                                            <td>
+                                                <span class="bills-list-title-custom">
+                                                    <a id="" href="{% url 'dashboardbilldetail' entries.id bio_object.name %}">{{ entries.title_of_bill }}</a>
+                                                </span> 
+                                            </td>
+                                            <td>
+                                                <!-- Switch-->
+                                                <div class="mt-1">
+                                                    <input class="switch-input-custom" type="checkbox" id="switch{{ entries.id }}" data-switch="success" checked />
+                                                    <label class="track-untrack-custom" for="switch{{ entries.id }}" data-on-label="Yes" data-off-label="No" class="mb-0 d-block"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="{{ entries.link_to_bill }}" >
+                                                    <button class="btn btn-rounded btn-info font-10">READ</button>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div class="mt-1">
+                                                    <span class="uil uil-comments-alt ml-lg-3"></span> 148
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td>
+                                                <span class="bills-list-title-custom">
+                                                    <a id="" href="{% url 'dashboardbilldetail' entries.id bio_object.name %}">{{ entries.title_of_bill }}</a>
+                                                </span> 
+                                            </td>
+                                            <td>
+                                                <!-- Switch-->
+                                                <div class="mt-1">
+                                                    <input class="switch-input-custom" type="checkbox" id="switch{{ entries.id }}" data-switch="success" />
+                                                    <label class="track-untrack-custom" for="switch{{ entries.id }}" data-on-label="Yes" data-off-label="No" class="mb-0 d-block"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="{{ entries.link_to_bill }}" >
+                                                    <button class="btn btn-rounded btn-info font-10">READ</button>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div class="mt-1">
+                                                    <span class="uil uil-comments-alt ml-lg-3"></span> 148
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+
                                 {% endfor %}
                             </tbody>
                         </table>
@@ -270,6 +298,9 @@
 
     </div>
     <!-- END wrapper -->
+
+    
+    <script type="text/javascript" src="{% static 'trackgovApp/js/track-untrack.js' %}"></script>
 
 {% endblock content %}
 

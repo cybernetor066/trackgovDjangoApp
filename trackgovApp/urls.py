@@ -16,11 +16,15 @@ urlpatterns = [
     path('dashboardbillslist/', views.dashboard_bills_list, name='dashboardbillslist'),
     # path('dashboardbilldetail/<int:bill_id>/', views.dashboard_bill_detail, name='dashboardbilldetail'),
     path('dashboardbilldetail/<int:bill_id>/<str:rep_name>/', views.dashboard_bill_detail, name='dashboardbilldetail'),
+
     path('show-loc/', views.show_location, name='showlocation'),
+
     # path('politicianbio/', views.politician_bio, name='politicianbio'),
     path('politicianbio/<str:rep_name>/', views.politician_bio, name='politicianbio'),
 
-    path('sessioncookiestest/<int:bill_id>/', views.session_cookies_test, name='sessioncookiestest'),
+    # path('trackbillspreferences/<int:bill_id>/<str:option>/', views.track_bills_preferences, name='trackbillspreferences'),
+    path('trackbillspreferences/', views.track_bills_preferences, name='trackbillspreferences'),
+    path('trackbilldetailpreferences/', views.track_billdetail_preferences, name='trackbilldetailpreferences'),
 
     path('error404/', views.error404, name='error404'),
     path('error500/', views.error500, name='error500'),

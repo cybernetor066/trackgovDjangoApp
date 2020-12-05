@@ -1,6 +1,6 @@
 {% extends 'trackgovApp/base.html' %}
 {% block title %} Track Bill | Trackgov Dashboard Bill Detail {% endblock title %}
-
+{% load static %}
 
 {% block content %}
     <!-- Begin page -->
@@ -133,14 +133,18 @@
 
                     <!-- Switch-->
                     <div class="row justify-content-center">
-                        {% comment %} <div class="col-lg-12"> {% endcomment %}
                             <div class="mt-1 mb-3">
                                 Track
                             </div>
 
                             <div class="mt-1 mb-3 ml-1">
-                                <input type="checkbox" id="switch{{ bill.id }}" data-switch="success"/>
-                                <label for="switch{{ bill.id }}" data-on-label="Yes" data-off-label="No" class="mb-0 d-block"></label>
+                                {% if bill.id in tracked_bills_id %}
+                                    <input class="switch-input-custom" type="checkbox" id="switch{{ bill.id }}" data-switch="success" checked />
+                                    <label class="track-untrack-custom" for="switch{{ bill.id }}" data-on-label="Yes" data-off-label="No" class="mb-0 d-block"></label>
+                                {% else %}
+                                    <input class="switch-input-custom" type="checkbox" id="switch{{ bill.id }}" data-switch="success"/>
+                                    <label class="track-untrack-custom" for="switch{{ bill.id }}" data-on-label="Yes" data-off-label="No" class="mb-0 d-block"></label>
+                                {% endif %}
                             </div>
 
                             <div class="mt-0 mb-3 ml-5">
@@ -148,7 +152,6 @@
                                     <button class="btn btn-rounded btn-info font-10">READ</button>
                                 </a>
                             </div>
-                        {% comment %} </div> {% endcomment %}
                     </div> 
                     
                     <div class="row">
@@ -374,6 +377,8 @@
 
     </div>
     <!-- END wrapper -->
+
+    <script type="text/javascript" src="{% static 'trackgovApp/js/track-untrack-detail.js' %}"></script>
 
 
 {% endblock content %}

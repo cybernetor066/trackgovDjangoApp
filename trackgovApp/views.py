@@ -336,6 +336,10 @@ def dashboard_bills_list(request):
     if elect_div is not None:
         res_object1 = HrepsPoliticiansInfo.objects.filter(elec_div__icontains=elect_div)
 
+        # Setting a global for poitician info object
+        global info_object_hrep
+        info_object_hrep = res_object1
+
         if len(res_object1) == 0:
             print("Electoral div '" + elect_div + "' not found in excel sheet.")
             pass
@@ -356,8 +360,19 @@ def dashboard_bills_list(request):
         res_object2 = HouseOfRepsBills.objects.filter(category__in=category_list)
 
 
+    # Then checking our session for tracked Bills
+    if not request.session.get('bill_id_in'):
+        request.session['bill_id_in'] = []     # Setting session data
+    else:
+        pass
+    bills_id_tracked = request.session.get('bill_id_in')         # retrieve our session data using a key
+    tracked_bills = HouseOfRepsBills.objects.filter(id__in=bills_id_tracked)
+
+
+
     context = {
-        'ourRange0': range(3),
+        'tracked_bills': tracked_bills,
+        'bills_id_tracked': bills_id_tracked,
         'bio_object': res_object1[0],
         'bill_list': res_object2,
     }        
@@ -379,8 +394,17 @@ def dashboard_bill_detail(request, bill_id, rep_name):
             res_object1 = HrepsVotePatterns.objects.filter(politician_name__icontains=rep_namee)
         else:
             pass
-    print('Length of rep_vote obj is: ', len(res_object0) )
+    print('Length of rep_vote obj is: ', len(res_object0))
+
+    # Then checking our session for tracked Bills
+    if not request.session.get('bill_id_in'):
+        request.session['bill_id_in'] = []     # Setting session data
+    else:
+        pass
+    bills_id_tracked = request.session.get('bill_id_in')         # retrieve our session data using a key
+
     context = {
+        'tracked_bills_id': bills_id_tracked,
         'bill': get_object_or_404(HouseOfRepsBills, pk=bill_id),
         'rep_vote': res_object1[0],
         'bio_object': bio_object[0]
@@ -418,12 +442,124 @@ def politician_bio(request, rep_name):
 
 
 
+# Testing Django session cookies
+def track_bills_preferences(request):
+    if request.method == 'GET':
+        bill_id_received = int(request.GET['bill_id'])
+        tracking_option = request.GET['option']
+
+        print('Bill is: ', bill_id_received)
+        print('Option is: ', tracking_option)
+
+        # messages.error(request, 'Hello Cyber Overlord!')
+
+        if not request.session.get('bill_id_in'):
+            request.session['bill_id_in'] = []     # Setting session data
+        else:
+            pass
+
+        bill_id_tracked = request.session.get('bill_id_in', [])         # retrieve our session data using a key
+
+        if tracking_option == 'Yes':
+            if bill_id_received in bill_id_tracked:
+                pass
+            else:
+                # Add to our list
+                bill_id_tracked.append(bill_id_received)   # modifing our list
+                request.session['bill_id_in'] = bill_id_tracked # updating our list
+
+        elif tracking_option == 'No':
+            # Remove from our list
+            bill_id_tracked.remove(bill_id_received)   # modifying our list
+            request.session['bill_id_in'] = bill_id_tracked # updating our list
+        
+        else:
+            pass
+
+        # # Deleting session data
+        # bill_id_tracked = []
+        # del request.session['bill_id_in']
+
+    # bill_id_tracked = request.session.get('bill_id_in')         # retrieve our session data using a key 
+    response_text = ""
+
+    rep_name = info_object_hrep[0].name
+
+    res_object1 = HouseOfRepsBills.objects.filter(id__in=bill_id_tracked)
+
+    # Confirm
+    print(bill_id_tracked)
+    print(len(res_object1))
+
+    for bill in res_object1:
+        response_text += ('<tr>'
+                            '<td class="w-50">'
+                                '<span class="bills-list-title-custom">'
+                                    # 'Deleting cookies'
+                                    f'<a id="" href="/dashboardbilldetail/{bill.id}/{rep_name}">{bill.title_of_bill}</a>'
+                                '</span>'
+                            '</td>'
+                            '<td class="w-25">'
+                                    '<div class="progress progress-lg progress-md progress-sm">'
+                                        '<div class="progress-bar progress-lg progress-md progress-sm bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>'
+                                    '</div>'
+                            '</td>'
+                            '<td class="w-25">'
+                                '<div>'
+                                    f'<span class="uil uil-comments-alt ml-3"></span> 148'
+                                '</div>'
+                            '</td>'
+                        '</tr>')
+
+
+    # context = {
+    #     'bill_id': bill_id,
+    # }
+
+    # return render(request, 'trackgovApp/session-cookies.html', context=context)
+    # return JsonResponse(response_text, safe=False)
+    return HttpResponse(response_text)
+    
 
 # Testing Django session cookies
-def session_cookies_test(request):
-    return ""
+def track_billdetail_preferences(request):
+    if request.method == 'GET':
+        bill_id_received = int(request.GET['bill_id'])
+        tracking_option = request.GET['option']
 
+        print('Bill is: ', bill_id_received)
+        print('Option is: ', tracking_option)
 
+        # messages.error(request, 'Hello Cyber Overlord!')
+
+        if not request.session.get('bill_id_in'):
+            request.session['bill_id_in'] = []     # Setting session data
+        else:
+            pass
+
+        bill_id_tracked = request.session.get('bill_id_in', [])         # retrieve our session data using a key
+
+        if tracking_option == 'Yes':
+            if bill_id_received in bill_id_tracked:
+                pass
+            else:
+                # Add to our list
+                bill_id_tracked.append(bill_id_received)   # modifing our list
+                request.session['bill_id_in'] = bill_id_tracked # updating our list
+
+        elif tracking_option == 'No':
+            # Remove from our list
+            bill_id_tracked.remove(bill_id_received)   # modifying our list
+            request.session['bill_id_in'] = bill_id_tracked # updating our list
+        
+        else:
+            pass
+
+        # # Deleting session data
+        # bill_id_tracked = []
+        # del request.session['bill_id_in']
+
+    return HttpResponse('Thank you!')
 
 
 
@@ -450,3 +586,81 @@ def faq(request):
 #     with open(file_path +file.name,'wb+') as destination:  # Not good to hardcode file paths when programming
 #         for chunk in file.chunks():
 #             destination.write(chunk)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
